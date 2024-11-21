@@ -35,7 +35,7 @@ function App() {
     <DefaultLayout>
       <Routes>
         <Route
-          index
+          path='/dashboard'
           element={
             <>
               <PageTitle title="CMO SWAR | DASHBOARD" />
@@ -43,7 +43,7 @@ function App() {
             </>
           }
         />
-        <Route
+        {/* <Route
           path="/calendar"
           element={
             <>
@@ -51,7 +51,7 @@ function App() {
               <Calendar />
             </>
           }
-        />
+        /> */}
         <Route
           path="/profile"
           element={
@@ -98,10 +98,10 @@ function App() {
           }
         />
         <Route
-          path="/chart"
+          path="/activity"
           element={
             <>
-              <PageTitle title="Basic Chart | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="Activity | CMOSWAR" />
               <Chart />
             </>
           }
