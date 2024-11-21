@@ -32,32 +32,38 @@ function App() {
   return loading ? (
     <Loader />
   ) : (
-    <DefaultLayout>
+    <>
       <Routes>
         <Route
           path='/dashboard'
           element={
             <>
-              <PageTitle title="CMO SWAR | DASHBOARD" />
-              <ECommerce />
+              <DefaultLayout>
+                <PageTitle title="CMO SWAR | DASHBOARD" />
+                <ECommerce />
+              </DefaultLayout>
             </>
           }
         />
-        {/* <Route
+        <Route
           path="/calendar"
           element={
             <>
-              <PageTitle title="Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Calendar />
+              <DefaultLayout>
+                <PageTitle title="Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <Calendar />
+              </DefaultLayout>
             </>
           }
-        /> */}
+        />
         <Route
           path="/profile"
           element={
             <>
-              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Profile />
+              <DefaultLayout>
+                <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <Profile />
+              </DefaultLayout>
             </>
           }
         />
@@ -65,8 +71,10 @@ function App() {
           path="/forms/form-elements"
           element={
             <>
-              <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <FormElements />
+              <DefaultLayout>
+                <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <FormElements />
+              </DefaultLayout>
             </>
           }
         />
@@ -74,8 +82,10 @@ function App() {
           path="/forms/form-layout"
           element={
             <>
-              <PageTitle title="Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <FormLayout />
+              <DefaultLayout>
+                <PageTitle title="Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <FormLayout />
+              </DefaultLayout>
             </>
           }
         />
@@ -83,8 +93,10 @@ function App() {
           path="/tables"
           element={
             <>
-              <PageTitle title="Tables | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Tables />
+              <DefaultLayout>
+                <PageTitle title="Tables | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <Tables />
+              </DefaultLayout>
             </>
           }
         />
@@ -92,8 +104,10 @@ function App() {
           path="/settings"
           element={
             <>
-              <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Settings />
+              <DefaultLayout>
+                <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <Settings />
+              </DefaultLayout>
             </>
           }
         />
@@ -101,8 +115,10 @@ function App() {
           path="/activity"
           element={
             <>
-              <PageTitle title="Activity | CMOSWAR" />
-              <Chart />
+              <DefaultLayout>
+                <PageTitle title="Activity | CMOSWAR" />
+                <Chart />
+              </DefaultLayout>
             </>
           }
         />
@@ -110,8 +126,10 @@ function App() {
           path="/ui/alerts"
           element={
             <>
-              <PageTitle title="Alerts | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Alerts />
+              <DefaultLayout>
+                <PageTitle title="Alerts | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <Alerts />
+              </DefaultLayout>
             </>
           }
         />
@@ -119,13 +137,15 @@ function App() {
           path="/ui/buttons"
           element={
             <>
-              <PageTitle title="Buttons | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Buttons />
+              <DefaultLayout>
+                <PageTitle title="Buttons | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                <Buttons />
+              </DefaultLayout>
             </>
           }
         />
         <Route
-          path="/auth/signin"
+          path="/signin"
           element={
             <>
               <PageTitle title="Signin | TailAdmin - Tailwind CSS Admin Dashboard Template" />
@@ -134,7 +154,7 @@ function App() {
           }
         />
         <Route
-          path="/auth/signup"
+          path="/signup"
           element={
             <>
               <PageTitle title="Signup | TailAdmin - Tailwind CSS Admin Dashboard Template" />
@@ -143,7 +163,7 @@ function App() {
           }
         />
       </Routes>
-    </DefaultLayout>
+    </>
   );
 }
 
