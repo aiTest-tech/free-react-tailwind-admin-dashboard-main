@@ -8,6 +8,7 @@ import MapOne from '../../components/Maps/MapOne';
 import TableOne from '../../components/Tables/TableOne';
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
+import TableTwo from '../../components/Tables/TableTwo';
 
 
 
@@ -15,10 +16,10 @@ const ECommerce: React.FC = () => {
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
-        <CardDataStats title="WRITE TO CMO" total="$3.456K" rate="0.43%" levelUp>
+        <CardDataStats title="WRITE TO CMO" total="3.456" rate="0.43%" levelUp>
           <img src="images\gujarat.svg" alt="gujarat" className='w-[30px] h-[30px]' />
         </CardDataStats>
-        <CardDataStats title="JANSAMWAD" total="$45,2K" rate="4.35%" levelUp>
+        <CardDataStats title="JANSAMWAD" total="45.2" rate="4.35%" levelUp>
           <FaPhoneAlt />
         </CardDataStats>
         <CardDataStats title="S.W.A.G.A.T" total="2.450" rate="2.59%" levelUp>
@@ -34,10 +35,19 @@ const ECommerce: React.FC = () => {
         {/* <ChartTwo /> */}
         {/* <ChartThree /> */}
         {/* <MapOne /> */}
-        <div className="col-span-12 xl:col-span-8 rounded-xl">
-          <TableOne />
-        </div>
-        <ChatCard />
+        {/* <ChatCard /> */}
+      </div>
+      <div className="col-span-12 xl:col-span-12 rounded-xl w-[100%]">
+        <TableOne />
+        {/* <TableTwo /> */}
+      </div>
+      <div className="col-span-12 xl:col-span-12 rounded-xl w-[100%] mt-5">
+        <TableOne />
+        {/* <TableTwo /> */}
+      </div>
+      <div className="col-span-12 xl:col-span-12 rounded-xl w-[100%] mt-5">
+        <TableOne />
+        {/* <TableTwo /> */}
       </div>
     </>
   );
