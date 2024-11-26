@@ -145,7 +145,7 @@ function App() {
           }
         />
         <Route
-          path="/signin"
+          path="/"
           element={
             <>
               <PageTitle title="Signin | TailAdmin - Tailwind CSS Admin Dashboard Template" />
@@ -162,6 +162,23 @@ function App() {
             </>
           }
         />
+
+        <Route path='/demo' element={
+          <>
+            <DefaultLayout>
+              <PageTitle title="Try it out" />
+              <iframe
+                src="http://10.11.4.100:5174/"
+                title="Home Iframe"
+                allow="camera; microphone; display-capture; encrypted-media; autoplay" 
+                sandbox="allow-scripts allow-same-origin"
+                width="100%"
+                height="600px"
+                style={{ border: 'none' }}
+              />
+            </DefaultLayout>
+          </>
+        } />
       </Routes>
     </>
   );

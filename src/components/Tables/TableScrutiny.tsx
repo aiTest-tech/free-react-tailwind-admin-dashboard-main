@@ -54,7 +54,7 @@ interface RequestData{
   title:String
 }
 
-const TableOne = (props:RequestData) => {
+const TableScrutiny = (props:RequestData) => {
   const { isLoading, isError, error, data } = useGetAnalyticsDataQuery();
   useEffect(() => {
     console.log(data);
@@ -102,7 +102,7 @@ const TableOne = (props:RequestData) => {
           </div>
         </div>
 
-        {brandData.map((brand, key) => (
+        {data?.asr.map((brand, key) => (
           <div
             className={`grid grid-cols-3 sm:grid-cols-6 ${key === brandData.length - 1
               ? ''
@@ -111,34 +111,33 @@ const TableOne = (props:RequestData) => {
             key={key}
           >
             <div className="flex items-center gap-3 p-2.5 xl:p-5">
-              <div className="flex-shrink-0">
+              {/* <div className="flex-shrink-0">
                 <img src={brand.logo} alt="Brand" />
-              </div>
+              </div> */}
               <p className="hidden text-black dark:text-white sm:block">
-                {brand.name}
+                {brand.project}
               </p>
             </div>
 
 
-
             <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-meta-3">{brand.revenues}</p>
+              <p className="text-meta-3">{brand.total_requests}</p>
             </div>
 
             <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-              <p className="text-black dark:text-white">{brand.sales}</p>
+              <p className="text-black dark:text-white">{brand.success_request}</p>
             </div>
 
             <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-              <p className="dark:text-red-600 text-red-600 font-extrabold ">{brand.conversion}%</p>
+              <p className="dark:text-red-600 text-red-600 font-extrabold ">{brand.failure_request}%</p>
             </div>
 
             <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-black dark:text-green-500 font-extrabold">{brand.conversion}%</p>
+              <p className="text-black dark:text-green-500 font-extrabold">{brand.success_rate}%</p>
             </div>
 
             <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-red-800 dark:text-red-600 font-extrabold">{brand.visitors}K</p>
+              <p className="text-red-800 dark:text-red-600 font-extrabold">{brand.failure_rate}%</p>
             </div>
           </div>
         ))}
@@ -147,4 +146,4 @@ const TableOne = (props:RequestData) => {
   );
 };
 
-export default TableOne;
+export default TableScrutiny;

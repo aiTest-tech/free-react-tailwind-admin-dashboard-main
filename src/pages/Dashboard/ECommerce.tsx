@@ -9,6 +9,11 @@ import TableOne from '../../components/Tables/TableOne';
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import TableTwo from '../../components/Tables/TableTwo';
+import Loader from '../../common/Loader';
+import TableASR from '../../components/Tables/TableASR';
+import TableSentiment from '../../components/Tables/TableSentiment';
+import TableScrutiny from '../../components/Tables/TableScrutiny';
+
 
 
 
@@ -38,15 +43,16 @@ const ECommerce: React.FC = () => {
         {/* <ChatCard /> */}
       </div>
       <div className="col-span-12 xl:col-span-12 rounded-xl w-[100%]">
-        <TableOne />
+        <TableASR title={'Speech To Text'} />
         {/* <TableTwo /> */}
       </div>
       <div className="col-span-12 xl:col-span-12 rounded-xl w-[100%] mt-5">
-        <TableOne />
+        {/* <TableOne title={'Sentiment'} /> */}
+        <TableSentiment title={'Sentiment'} />
         {/* <TableTwo /> */}
       </div>
       <div className="col-span-12 xl:col-span-12 rounded-xl w-[100%] mt-5">
-        <TableOne />
+        <TableScrutiny title={'Scrutiny'} />
         {/* <TableTwo /> */}
       </div>
     </>

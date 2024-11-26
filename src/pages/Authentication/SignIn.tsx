@@ -5,6 +5,8 @@ import { useSendloginCredentialsMutation } from '../../features/authApi';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from '../../common/Loader';
+import { GiPsychicWaves } from "react-icons/gi";
+
 
 const SignIn: React.FC = () => {
   const navigate = useNavigate();
@@ -46,23 +48,22 @@ const SignIn: React.FC = () => {
           </div>
         )}
       </div>
+      <div className='absolute top-[50px] left-[640px]'>
+        <GiPsychicWaves  className='w-[80px] h-[80px]' />
+      </div>
       <div className="font-[sans-serif] bg-white max-w-4xl flex items-center mx-auto md:h-screen p-4">
         <div className="grid md:grid-cols-3 items-center shadow-[0_2px_10px_-3px_rgba(6,81,237,0.3)] rounded-xl overflow-hidden">
           <div className="max-md:order-1 flex flex-col justify-center space-y-16 max-md:mt-16 min-h-full bg-gradient-to-r from-gray-900 to-gray-700 lg:px-8 px-4 py-4">
             <div>
-              <h4 className="text-white text-lg font-semibold">Login into your account</h4>
-              <p className="text-[13px] text-gray-300 mt-3 leading-relaxed">Welcome to our Login page!</p>
-            </div>
-            <div>
-              <h4 className="text-white text-lg font-semibold">Simple &amp; Secure Registration</h4>
+              <h4 className="text-white text-lg font-semibold">CMO SWAR (Speech and Written Analysis Resource) </h4>
               <p className="text-[13px] text-gray-300 mt-3 leading-relaxed">
-                Our registration process is designed to be straightforward and secure. We prioritize your privacy and data security.
+                CMO SWAR is an innovative platform that combines AI-driven analysis of spoken and written communication to enhance understanding, decision-making, and performance through Machine Learning and Bhashini. Empowering Government with actionable insights, SWAR bridges the gap between expression and clarity across English and Gujarati languages and formats
               </p>
             </div>
           </div>
           <form className="md:col-span-2 w-full py-6 px-6 sm:px-16" onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-6">
-              <h3 className="text-gray-800 text-2xl font-bold">Login into your Account</h3>
+              <h3 className="text-gray-800 text-2xl font-bold">Login into CMOSWAR</h3>
             </div>
             <div className="space-y-6">
               <div>
@@ -98,7 +99,7 @@ const SignIn: React.FC = () => {
                 Login
               </button>
             </div>
-            <p className="text-gray-800 text-sm mt-6 text-center">
+            {/* <p className="text-gray-800 text-sm mt-6 text-center">
               Not a member yet?{" "}
               <NavLink
                 to="/signup"
@@ -106,7 +107,7 @@ const SignIn: React.FC = () => {
               >
                 Create
               </NavLink>
-            </p>
+            </p> */}
           </form>
         </div>
       </div>

@@ -3,6 +3,8 @@ import { NavLink, useLocation } from 'react-router-dom';
 import SidebarLinkGroup from './SidebarLinkGroup';
 // import Logo from 'images/logo/logo.svg';
 import Logo from "../../../public/images/cmoswarlogo1.svg"
+import { FaMicrophone } from "react-icons/fa";
+
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -180,17 +182,26 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 </NavLink>
               </li>
               {/* <!-- Menu Item Profile --> */}
-
+              <li>
+                <NavLink
+                  to="/demo"
+                  className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('demo') && 'bg-graydark dark:bg-meta-4 rounded-xl'
+                    }`}
+                >
+                  <FaMicrophone />
+                  Demo
+                </NavLink>
+              </li>
               {/* <!-- Menu Item Forms --> */}
-              
+
               {/* <!-- Menu Item Forms --> */}
 
               {/* <!-- Menu Item Tables --> */}
-              
+
               {/* <!-- Menu Item Tables --> */}
 
               {/* <!-- Menu Item Settings --> */}
-              
+
               {/* <!-- Menu Item Settings --> */}
             </ul>
           </div>
