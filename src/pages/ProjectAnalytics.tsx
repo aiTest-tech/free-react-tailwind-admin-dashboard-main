@@ -1,80 +1,160 @@
-import React from 'react'
-import { useParams } from 'react-router-dom';
-import Chart from './Chart';
+import React, { useMemo, useState } from 'react';
+import { AgGridReact } from 'ag-grid-react';
 import { useGetWtcsDataQuery } from '../features/wtcfetchApi';
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
+import Loader from '../common/Loader';
 
 const ProjectAnalytics = () => {
-  const params = useParams()
-  console.log(params);
-  const { data, error, isLoading } = useGetWtcsDataQuery()
-  console.log(data);
+  // Fetch data using RTK Query
+  const { data, error, isLoading } = useGetWtcsDataQuery();
+
+  // State for managing the modal visibility and selected message
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedMessage, setSelectedMessage] = useState('');
+
+  // Function to handle opening the modal
+  const handleMessageClick = (message) => {
+    setSelectedMessage(message);
+    setIsModalOpen(true); // Open the modal with the full message
+  };
+
+  // Function to close the modal
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedMessage(''); // Clear the message content
+  };
+
+  // Column definitions for ag-Grid
+  const columnDefs = useMemo(() => [
+    {
+      headerName: '',
+      checkboxSelection: true,
+      width: 50
+    },
+    {
+      headerName: 'Sentiment Polarity',
+      field: 'sentiment_cal_pol',
+      sortable: true,
+      filter: true,
+      width: 160,
+    },
+    {
+      headerName: 'Subject',
+      field: 'subject',
+      sortable: true,
+      filter: true,
+      width: 200,
+    },
+    {
+      headerName: 'Message',
+      field: 'message',  // Ensure the field name matches your data
+      sortable: true,
+      filter: true,
+      width: 200,
+      cellRendererFramework: (params) => {
+        console.log("params", params);
+        // Log to check if message exists in the row data
+        if (!params.value) {
+          console.log('Message field is empty or missing');
+          return null; // Return nothing if there's no message
+        }
+        return (
+          <button
+            className="text-blue-500 underline"
+            onClick={() => handleMessageClick(params.value)}
+            style={{
+              backgroundColor: 'blue',
+              color: 'white',
+              padding: '5px 10px',
+              borderRadius: '5px',
+              border: 'none',
+            }}
+          >
+            View Message
+          </button>
+        );
+      },
+    },
+    {
+      headerName: 'Sentiment Gravity',
+      field: 'sentiment_cal_gra',
+      sortable: true,
+      filter: true,
+    },
+    {
+      headerName: 'Level 0 Scrutiny',
+      field: 'lo_sc',
+      sortable: true,
+      filter: true,
+    },
+    {
+      headerName: 'Department Routing',
+      field: 'depr_rout',
+      sortable: true,
+      filter: true,
+    },
+    {
+      headerName: 'Created At',
+      field: 'created_at',
+      sortable: true,
+      filter: true,
+    },
+  ], []);
+
+  // Grid options for pagination, sorting, etc.
+  const gridOptions = {
+    paginationPageSize: 10,
+    domLayout: 'autoHeight',
+  };
+
+  // Handle loading and error states
+  // if (isLoading) return <div><Loader /></div>;
+  if (error) return <div>Error fetching data</div>;
 
   return (
-    <div>
-      <div className="relative overflow-x-auto">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-              <th scope="col" className="px-6 py-3">
-                
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Subject
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Message
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Email
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Level 0 Scrutiny
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Sentiment Gravity
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Sentiment Polarity
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Department Routing
-              </th>
-              <th scope="col" className="px-6 py-3">
-                Created At
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              data?.map((item, index) => (
-                <>
-                  <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th className='px-2'>
-                      <input type="checkbox" name="" id="" />
-                    </th>
-                    <th
-                      scope="row"
-                      className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                    >
-                      {item.subject}
-                    </th>
-                    <td className="px-6 py-4">{item.message}</td>
-                    <td className="px-6 py-4">{item.email}</td>
-                    <td className="px-6 py-4">{item.lo_sc}</td>
-                    <td className="px-6 py-4">{item.sentiment_cal_gra}</td>
-                    <td className="px-6 py-4">{item.sentiment_cal_pol}</td>
-                    <td className="px-6 py-4">{item.depr_rout}</td>
-                    <td className="px-6 py-4">{item.created_at}</td>
-                  </tr>
-                </>
-              ))
-            }
-          </tbody>
-        </table>
+    <>
+      <div className="flex justify-between items-center gap-2 mb-5 ml-3">
+        <div className="flex justify-between gap-3">
+          <input className="py-2 rounded-lg px-2 bg-gray-700" type="date" />
+          <input className="py-2 rounded-lg px-2 bg-gray-700" type="date" />
+        </div>
       </div>
 
-    </div>
-  )
-}
+      <div className="bg-[#24303F] text-white min-h-screen">
+        {/* ag-Grid table */}
+        <div className="ag-theme-alpine-dark" style={{ height: '500px', width: '100%' }}>
+          <AgGridReact
+            columnDefs={columnDefs}
+            rowData={data}  // Provide row data from RTK Query
+            gridOptions={gridOptions}
+            pagination={true}
+            paginationPageSize={10}
+            domLayout="autoHeight"
+          />
+        </div>
 
-export default ProjectAnalytics
+        {/* Modal for showing full message */}
+        {isModalOpen && (
+          <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50">
+            <div className="bg-white text-black p-6 rounded-lg w-2/3 max-w-3xl">
+              <h2 className="text-xl font-semibold mb-4">Full Message</h2>
+              {/* Ensure that the message can scroll if it is too long */}
+              <div className="max-h-96 overflow-y-auto">
+                <p>{selectedMessage}</p>
+              </div>
+              <button
+                onClick={handleCloseModal}
+                className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </>
+  );
+};
+
+export default ProjectAnalytics;

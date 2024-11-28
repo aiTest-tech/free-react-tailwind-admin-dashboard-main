@@ -163,7 +163,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                         className={`block px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700 transition duration-300 ${pathname.includes("WTC") ? "bg-gray-700" : ""
                           }`}
                       >
-                        WTC
+                        Write To CMO
                       </NavLink>
                     </li>
                     <li>
@@ -202,7 +202,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 </NavLink>
               </li>
               <li>
-                <NavLink
+                {/* <NavLink
                   to="/profile"
                   className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('profile') && 'bg-graydark dark:bg-meta-4 rounded-xl'
                     }`}
@@ -225,7 +225,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     />
                   </svg>
                   Profile
-                </NavLink>
+                </NavLink> */}
               </li>
               <li>
                 <NavLink

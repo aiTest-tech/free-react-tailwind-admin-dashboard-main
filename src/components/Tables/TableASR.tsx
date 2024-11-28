@@ -7,6 +7,7 @@ import BrandFive from '../../images/brand/brand-05.svg';
 import { useGetAnalyticsDataQuery } from '../../features/analyticsApi';
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import Loader from '../../common/Loader';
 
 const brandData: BRAND[] = [
   {
