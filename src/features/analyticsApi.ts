@@ -80,7 +80,7 @@ export interface APIState {
 // Define a service using a base URL and expected endpoints
 export const analyticsApi = createApi({
   reducerPath: 'analyticsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://10.10.2.179:5555/api/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://10.10.2.179:6162/api/' }),
   endpoints: (builder) => ({
     getAnalyticsData: builder.query<APIState, void>({
       query: () => `analytics/`, // Adjust this path to match your actual endpoint

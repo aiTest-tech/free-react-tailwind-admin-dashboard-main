@@ -6,6 +6,7 @@ import BrandFour from '../../images/brand/brand-04.svg';
 import BrandFive from '../../images/brand/brand-05.svg';
 import { useGetAnalyticsDataQuery } from '../../features/analyticsApi';
 import { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const brandData: BRAND[] = [
   {
@@ -50,11 +51,11 @@ const brandData: BRAND[] = [
   },
 ];
 
-interface RequestData{
-  title:String
+interface RequestData {
+  title: String
 }
 
-const TableASR = (props:RequestData) => {
+const TableASR = (props: RequestData) => {
   const { isLoading, isError, error, data } = useGetAnalyticsDataQuery();
   useEffect(() => {
     console.log(data);
@@ -64,7 +65,7 @@ const TableASR = (props:RequestData) => {
       <h4 className="mb-6 text-xl font-semibold text-black dark:text-white">
         {props.title}
       </h4>
-      
+
 
       <div className="flex flex-col">
         <div className="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-6">
@@ -115,7 +116,7 @@ const TableASR = (props:RequestData) => {
                 <img src={brand.logo} alt="Brand" />
               </div> */}
               <p className="hidden text-black dark:text-white sm:block">
-                {brand.project}
+                <NavLink to={`/project/${brand.project}`} >{brand.project}</NavLink>
               </p>
             </div>
 
