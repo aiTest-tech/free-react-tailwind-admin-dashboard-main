@@ -129,28 +129,30 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
 
               <li className="relative">
-                <button
-                  className="flex justify-between items-center w-full px-4 py-3 rounded-lg bg-gray-800 hover:bg-gray-700 transition duration-300"
-                  onClick={() => setisProjectDropdownOpen(!isProjectDropdownOpen)}
-                >
-                  <span className="flex items-center gap-3">
-                    {/* Icon */}
-                    <svg
-                      className="fill-current"
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M15.7499 2.9812H14.2874V2.36245C14.2874 2.02495 14.0062 1.71558 13.6405 1.71558C13.2749 1.71558 12.9937 1.99683 12.9937 2.36245V2.9812H4.97803V2.36245C4.97803 2.02495 4.69678 1.71558 4.33115 1.71558C3.96553 1.71558 3.68428 1.99683 3.68428 2.36245V2.9812H2.2499C1.29365 2.9812 0.478027 3.7687 0.478027 4.75308V14.5406C0.478027 15.4968 1.26553 16.3125 2.2499 16.3125H15.7499C16.7062 16.3125 17.5218 15.525 17.5218 14.5406V4.72495C17.5218 3.7687 16.7062 2.9812 15.7499 2.9812Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                    <NavLink to={'/dashboard'}>Projects</NavLink>
-                  </span>
-                  {isProjectDropdownOpen ? <FaAngleUp /> : <FaAngleDown />}
-                </button>
+                <NavLink to={'/'}>
+                  <button
+                    className="flex justify-between items-center w-full px-4 py-3 rounded-lg bg-gray-800 hover:bg-gray-700 transition duration-300"
+                    onClick={() => setisProjectDropdownOpen(!isProjectDropdownOpen)}
+                  >
+                    <span className="flex items-center gap-3">
+                      {/* Icon */}
+                      <svg
+                        className="fill-current"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 18 18"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M15.7499 2.9812H14.2874V2.36245C14.2874 2.02495 14.0062 1.71558 13.6405 1.71558C13.2749 1.71558 12.9937 1.99683 12.9937 2.36245V2.9812H4.97803V2.36245C4.97803 2.02495 4.69678 1.71558 4.33115 1.71558C3.96553 1.71558 3.68428 1.99683 3.68428 2.36245V2.9812H2.2499C1.29365 2.9812 0.478027 3.7687 0.478027 4.75308V14.5406C0.478027 15.4968 1.26553 16.3125 2.2499 16.3125H15.7499C16.7062 16.3125 17.5218 15.525 17.5218 14.5406V4.72495C17.5218 3.7687 16.7062 2.9812 15.7499 2.9812Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                      Projects
+                    </span>
+                    {isProjectDropdownOpen ? <FaAngleUp /> : <FaAngleDown />}
+                  </button>
+                </NavLink>
 
                 {/* Dropdown Menu */}
                 {isProjectDropdownOpen && (
@@ -158,7 +160,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     <li>
                       <NavLink
                         to="/project/WTC"
-                        className={`block px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700 transition duration-300 ${pathname.includes("dashboard") ? "bg-gray-700" : ""
+                        className={`block px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700 transition duration-300 ${pathname.includes("WTC") ? "bg-gray-700" : ""
                           }`}
                       >
                         WTC
@@ -167,7 +169,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     <li>
                       <NavLink
                         to="/project/JS"
-                        className={`block px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700 transition duration-300 ${pathname.includes("overview") ? "bg-gray-700" : ""
+                        className={`block px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700 transition duration-300 ${pathname.includes("JS") ? "bg-gray-700" : ""
                           }`}
                       >
                         JAN SANVAD

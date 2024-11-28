@@ -37,7 +37,7 @@ function App() {
     <>
       <Routes>
         <Route
-          path='/dashboard'
+          path='/'
           element={
             <>
               <DefaultLayout>
@@ -147,7 +147,7 @@ function App() {
           }
         />
         <Route
-          path="/"
+          path="/signin"
           element={
             <>
               <PageTitle title="Signin | TailAdmin - Tailwind CSS Admin Dashboard Template" />
