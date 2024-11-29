@@ -17,6 +17,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const location = useLocation();
   const { pathname } = location;
   const [isProjectDropdownOpen, setisProjectDropdownOpen] = useState(false)
+  const [isWtcDropdownOpen, setisWtcDropdownOpen] = useState(false);
 
   const trigger = useRef<any>(null);
   const sidebar = useRef<any>(null);
@@ -158,13 +159,58 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 {isProjectDropdownOpen && (
                   <ul className="mt-2 space-y-2 pl-6">
                     <li>
-                      <NavLink
+                      {/* <NavLink
                         to="/project/WTC"
                         className={`block px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700 transition duration-300 ${pathname.includes("WTC") ? "bg-gray-700" : ""
                           }`}
                       >
                         Write To CMO
+                      </NavLink> */}
+                      <NavLink to={'/project/wtc/'}>
+                        <button
+                          className="flex justify-between items-center w-full px-4 py-3 rounded-lg bg-gray-800 hover:bg-gray-700 transition duration-300"
+                          onClick={() => setisWtcDropdownOpen(!isWtcDropdownOpen)}
+                        >
+                          <span className="flex items-center gap-3">
+                            {/* Icon */}
+                            <svg
+                              className="fill-current"
+                              width="18"
+                              height="18"
+                              viewBox="0 0 18 18"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M15.7499 2.9812H14.2874V2.36245C14.2874 2.02495 14.0062 1.71558 13.6405 1.71558C13.2749 1.71558 12.9937 1.99683 12.9937 2.36245V2.9812H4.97803V2.36245C4.97803 2.02495 4.69678 1.71558 4.33115 1.71558C3.96553 1.71558 3.68428 1.99683 3.68428 2.36245V2.9812H2.2499C1.29365 2.9812 0.478027 3.7687 0.478027 4.75308V14.5406C0.478027 15.4968 1.26553 16.3125 2.2499 16.3125H15.7499C16.7062 16.3125 17.5218 15.525 17.5218 14.5406V4.72495C17.5218 3.7687 16.7062 2.9812 15.7499 2.9812Z"
+                                fill="currentColor"
+                              />
+                            </svg>
+                            Write To CMO
+                          </span>
+                          {isWtcDropdownOpen ? <FaAngleUp /> : <FaAngleDown />}
+                        </button>
                       </NavLink>
+                      {
+                        isWtcDropdownOpen && (
+                          <>
+                            <li>
+                              <NavLink to={'/project/wtc/l0'}>
+                                <button
+                                  className={`block px-4 py-2 rounded-lg text-gray-300 hover:bg-gray-700 transition duration-300 ${pathname.includes("L0") ? "bg-gray-700" : ""
+                                    }`}
+                                >
+                                  <span className="flex items-center gap-3">
+                                    {/* Icon */}
+                                    L0
+                                  </span>
+                                </button>
+                              </NavLink>
+
+                            </li>
+                          </>
+                        )
+                      }
+
                     </li>
                     <li>
                       <NavLink
@@ -202,7 +248,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 </NavLink>
               </li>
               <li>
-                {/* <NavLink
+                <NavLink
                   to="/profile"
                   className={`group relative flex items-center gap-2.5 rounded-xl py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('profile') && 'bg-graydark dark:bg-meta-4 rounded-xl'
                     }`}
@@ -225,7 +271,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     />
                   </svg>
                   Profile
-                </NavLink> */}
+                </NavLink>
               </li>
               <li>
                 <NavLink

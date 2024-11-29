@@ -18,6 +18,7 @@ import Buttons from './pages/UiElements/Buttons';
 import DefaultLayout from './layout/DefaultLayout';
 import ProjectAnalytics from './pages/ProjectAnalytics';
 import DemoPage from './pages/DemoPage';
+import WTCL0 from './pages/WTCL0';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -179,10 +180,17 @@ function App() {
             <>
               <DefaultLayout>
                 <PageTitle title="Try it out" />
-                <ProjectAnalytics />
+                {/* <ProjectAnalytics /> */}
+                <WTCL0 />
               </DefaultLayout>
             </>
           } />
+        <Route path='project/wtc/l0' element={
+          <DefaultLayout>
+            <PageTitle title="Try it out" />
+            {/* <WTCL0 /> */}
+            <ProjectAnalytics />
+          </DefaultLayout>} />
       </Routes>
     </>
   );

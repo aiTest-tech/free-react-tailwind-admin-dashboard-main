@@ -58,6 +58,7 @@ interface RequestData {
 
 const TableASR = (props: RequestData) => {
   const { isLoading, isError, error, data } = useGetAnalyticsDataQuery();
+  console.log("brijesh asr data ===", data);
   useEffect(() => {
     console.log(data);
   })

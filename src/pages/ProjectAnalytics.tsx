@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { AgGridReact } from 'ag-grid-react';
 import { useGetWtcsDataQuery } from '../features/wtcfetchApi';
 import 'ag-grid-community/styles/ag-grid.css';
@@ -6,8 +7,11 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 import Loader from '../common/Loader';
 
 const ProjectAnalytics = () => {
+  const params = useParams();
+
   // Fetch data using RTK Query
   const { data, error, isLoading } = useGetWtcsDataQuery();
+  console.log(data);
 
   // State for managing the modal visibility and selected message
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -38,6 +42,11 @@ const ProjectAnalytics = () => {
       sortable: true,
       filter: true,
       width: 160,
+      cellClassRules: {
+        'text-green-500': (params) => params.value && params.value.toLowerCase().trim() === 'positive',
+        'text-red-500': (params) => params.value && params.value.toLowerCase().trim() === 'negative',
+        'text-gray-500': (params) => params.value && params.value.toLowerCase().trim() === 'neutral',
+      },
     },
     {
       headerName: 'Subject',
@@ -48,33 +57,19 @@ const ProjectAnalytics = () => {
     },
     {
       headerName: 'Message',
-      field: 'message',  // Ensure the field name matches your data
+      field: 'message',
       sortable: true,
       filter: true,
-      width: 200,
-      cellRendererFramework: (params) => {
-        console.log("params", params);
-        // Log to check if message exists in the row data
-        if (!params.value) {
-          console.log('Message field is empty or missing');
-          return null; // Return nothing if there's no message
-        }
-        return (
-          <button
-            className="text-blue-500 underline"
-            onClick={() => handleMessageClick(params.value)}
-            style={{
-              backgroundColor: 'blue',
-              color: 'white',
-              padding: '5px 10px',
-              borderRadius: '5px',
-              border: 'none',
-            }}
-          >
-            View Message
-          </button>
-        );
-      },
+      width: 500,
+      // Add a "View Message" button to open the modal
+      cellRendererFramework: (params) => (
+        <button
+          className="text-blue-500 underline"
+          onClick={() => handleMessageClick(params.value)} // Open the modal with full message
+        >
+          View Message
+        </button>
+      ),
     },
     {
       headerName: 'Sentiment Gravity',
@@ -87,6 +82,10 @@ const ProjectAnalytics = () => {
       field: 'lo_sc',
       sortable: true,
       filter: true,
+      cellClassRules: {
+        'text-green-500': (params) => params.value && params.value.toLowerCase().trim() === 'accept',
+        'text-red-500': (params) => params.value && params.value.toLowerCase().trim() === 'reject',
+      },
     },
     {
       headerName: 'Department Routing',
@@ -108,8 +107,7 @@ const ProjectAnalytics = () => {
     domLayout: 'autoHeight',
   };
 
-  // Handle loading and error states
-  // if (isLoading) return <div><Loader /></div>;
+  if (isLoading) return <div><Loader /></div>;
   if (error) return <div>Error fetching data</div>;
 
   return (
@@ -139,8 +137,7 @@ const ProjectAnalytics = () => {
           <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50">
             <div className="bg-white text-black p-6 rounded-lg w-2/3 max-w-3xl">
               <h2 className="text-xl font-semibold mb-4">Full Message</h2>
-              {/* Ensure that the message can scroll if it is too long */}
-              <div className="max-h-96 overflow-y-auto">
+              <div className="max-h-96 overflow-auto">
                 <p>{selectedMessage}</p>
               </div>
               <button

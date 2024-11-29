@@ -11,7 +11,7 @@ export interface TypeDistributionInterface {
 
 // Define a service using a base URL and expected endpoints
 export const DepartmentRouteApi = createApi({
-  reducerPath: 'analyticsApi',
+  reducerPath: 'departmentrouteapi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://10.10.2.179:6162/api/wtc/' }),
   endpoints: (builder) => ({
     getDepartmentRoute: builder.query<TypeDistributionInterface[], void>({

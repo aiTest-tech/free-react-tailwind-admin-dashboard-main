@@ -253,19 +253,6 @@ const DemoPage = () => {
     return (
         <>
             <div className="absolute top-[120px] left-[40px] z-[555]">
-                {/* <ReactSpeedometer
-          value={333}
-          segments={5}
-          segmentColors={[
-            "#bf616a",
-            "#d08770",
-            "#ebcb8b",
-            "#a3be8c",
-            "#b48ead",
-          ]}
-        // startColor will be ignored
-        // endColor will be ignored
-        /> */}
                 {
                     sentimentResponse.gravity != null && (
                         <>
