@@ -16,34 +16,24 @@ import { useGetDepartmentRouteQuery } from '../features/DepartmentRouteApi';
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const LineChart = () => {
-  const { data, isLoading, isError } = useGetDepartmentRouteQuery()
+  const { data, isLoading, isError } = useGetDepartmentRouteQuery();
   const department = [];
 
-  data?.map((item, index) => {
-    department.push(item.depr_rout.substring(0,10).concat('...'))
-  })
-
+  data?.map((item) => {
+    department.push(item.depr_rout.substring(0, 10).concat('...'));
+  });
 
   const departmentcount = [];
-  data?.map((item, index) => {
-    departmentcount.push(item.count)
-  })
+  data?.map((item) => {
+    departmentcount.push(item.count);
+  });
 
-  console.log("brijesh department===", department);
-  console.log("brijesh department coutn", departmentcount);
-
-
-
-
-  console.log("brijesh departhment rout", data);
   // Data for the line chart
   const data1 = {
-    // labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    labels: department,
+    labels: department,  // Department names
     datasets: [
       {
         label: 'Department over requests',  // Label for the line
-        // data: [65, 59, 80, 81, 56, 55, 40],  // Data for the line (y values)
         data: departmentcount,  // Data for the line (y values)
         fill: false,  // Do not fill under the line
         borderColor: 'rgba(75, 192, 192, 1)',  // Line color
@@ -61,16 +51,23 @@ const LineChart = () => {
     plugins: {
       title: {
         display: true,
-        text: 'Count of Top 10 Departments by Application ',
+        text: 'Count of Top 10 Departments by Application',
+        color:"white",
+        font: {
+          size: 24,  // Font size
+          weight: 'bold',  // Font weight (bold)
+          family: 'Arial',  // Font family (optional)
+          color: '#ffffff',  // Title color set to white
+        },
       },
       tooltip: {
         callbacks: {
           // Customize the tooltip label
           label: function (context) {
             return `Count: ${context.raw}`;
-          }
-        }
-      }
+          },
+        },
+      },
     },
     scales: {
       x: {

@@ -36,7 +36,7 @@ const GlassMorphicCard = ({ children, total, title }) => {
   }, []);
 
   return (
-    <div className="card-container max-w-xs rounded-3xl border border-white/30 bg-white/30 backdrop-blur-md py-6 px-8 shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-3xl dark:border-gray-700 dark:bg-gray-800/30 dark:hover:scale-105 dark:hover:shadow-3xl">
+    <div className="card-container max-w-xs rounded-3xl mb-3 border border-white/30 bg-white/30 backdrop-blur-md py-6 px-8 shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-3xl dark:border-gray-700 dark:bg-gray-800/30 dark:hover:scale-105 dark:hover:shadow-3xl">
       <div className="icon-circle flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-indigo-500 to-blue-500 text-white shadow-lg dark:from-indigo-700 dark:to-blue-800">
         {children}
       </div>
@@ -45,7 +45,7 @@ const GlassMorphicCard = ({ children, total, title }) => {
         <h4 className="card-title text-3xl font-semibold text-gray-900 dark:text-white">
           {total}
         </h4>
-        <span className="card-subtitle text-sm font-medium text-gray-500 dark:text-gray-400">{title}</span>
+        <span className="card-subtitle text-xl font-medium text-gray-500 dark:text-gray-400">{title}</span>
       </div>
     </div>
   );

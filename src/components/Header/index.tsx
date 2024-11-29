@@ -62,7 +62,7 @@ const Header = (props: {
         </div>
 
         <div className="hidden sm:block">
-          <h1 className='text-2xl font-extrabold'>CMOSWAR</h1>
+          {/* <h1 className='text-2xl font-extrabold'>CMOSWAR</h1> */}
         </div>
 
         <div className="flex items-center gap-3 2xsm:gap-7">

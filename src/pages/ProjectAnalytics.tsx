@@ -112,11 +112,30 @@ const ProjectAnalytics = () => {
 
   return (
     <>
-      <div className="flex justify-between items-center gap-2 mb-5 ml-3">
-        <div className="flex justify-between gap-3">
-          <input className="py-2 rounded-lg px-2 bg-gray-700" type="date" />
-          <input className="py-2 rounded-lg px-2 bg-gray-700" type="date" />
+      <div className="flex justify-between items-center gap-2 mb-5 ml-3 w-full">
+        <div className="flex justify-between items-center gap-3">
+          <div className="flex flex-col">
+            <label htmlFor="fromDate" className="text-white">From Date</label>
+            <input
+              id="fromDate"
+              className="py-2 rounded-lg px-2 bg-gray-700"
+              type="date"
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label htmlFor="toDate" className="text-white">To Date</label>
+            <input
+              id="toDate"
+              className="py-2 rounded-lg px-2 bg-gray-700"
+              type="date"
+            />
+          </div>
         </div>
+        <div>
+          <button className='px-10 py-2 mt-3 text-white bg-green-900 mr-3 rounded-lg '>Post</button>
+        </div>
+
       </div>
 
       <div className="bg-[#24303F] text-white min-h-screen">
