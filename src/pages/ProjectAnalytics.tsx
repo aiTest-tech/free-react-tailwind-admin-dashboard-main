@@ -124,30 +124,30 @@
 
 //   return (
 //     <>
-//       <div className="flex justify-between items-center gap-2 mb-5 ml-3 w-full">
-//         <div className="flex justify-between items-center gap-3">
-//           <div className="flex flex-col">
-//             <label htmlFor="fromDate" className="text-white">From Date</label>
-//             <input
-//               id="fromDate"
-//               className="py-2 rounded-lg px-2 bg-gray-700"
-//               type="date"
-//             />
-//           </div>
+// <div className="flex justify-between items-center gap-2 mb-5 ml-3 w-full">
+//   <div className="flex justify-between items-center gap-3">
+//     <div className="flex flex-col">
+//       <label htmlFor="fromDate" className="text-white">From Date</label>
+//       <input
+//         id="fromDate"
+//         className="py-2 rounded-lg px-2 bg-gray-700"
+//         type="date"
+//       />
+//     </div>
 
-//           <div className="flex flex-col">
-//             <label htmlFor="toDate" className="text-white">To Date</label>
-//             <input
-//               id="toDate"
-//               className="py-2 rounded-lg px-2 bg-gray-700"
-//               type="date"
-//             />
-//           </div>
-//         </div>
-//         <div>
-//           <button className='px-10 py-2 mt-3 text-white bg-green-900 mr-3 rounded-lg '>Post</button>
-//         </div>
-//       </div>
+//     <div className="flex flex-col">
+//       <label htmlFor="toDate" className="text-white">To Date</label>
+//       <input
+//         id="toDate"
+//         className="py-2 rounded-lg px-2 bg-gray-700"
+//         type="date"
+//       />
+//     </div>
+//   </div>
+//   <div>
+//     <button className='px-10 py-2 mt-3 text-white bg-green-900 mr-3 rounded-lg '>Post</button>
+//   </div>
+// </div>
 
 //       <div className="bg-[#24303F] text-white min-h-screen">
 //         {/* ag-Grid table */}
@@ -1147,12 +1147,12 @@ interface RowData {
   depr_rout: string;
   created_at: string;
   email: string;
-  name:string;
-  occupation:string;
-  address:string;
-  district_corporation:string;
-  taluka_zone:string;
-  village_area:string;
+  name: string;
+  occupation: string;
+  address: string;
+  district_corporation: string;
+  taluka_zone: string;
+  village_area: string;
 }
 
 const ProjectAnalytics = () => {
@@ -1293,6 +1293,32 @@ const ProjectAnalytics = () => {
         </div>
       </div>
 
+      <div className="flex justify-between items-center gap-2 mb-5 ml-3 w-full">
+        <div className="flex justify-between items-center gap-3">
+          <div className="flex flex-col">
+            <label htmlFor="fromDate" className="text-white">From Date</label>
+            <input
+              id="fromDate"
+              className="py-2 rounded-lg px-2 bg-gray-700"
+              type="date"
+            />
+          </div>
+
+          <div className="flex flex-col">
+            <label htmlFor="toDate" className="text-white">To Date</label>
+            <input
+              id="toDate"
+              className="py-2 rounded-lg px-2 bg-gray-700"
+              type="date"
+            />
+          </div>
+        </div>
+        <div>
+          <button className='px-10 py-2 mt-3 text-white bg-green-900 mr-3 rounded-lg '>Post</button>
+        </div>
+      </div>
+
+
       {/* ag-Grid Table */}
       <div className="bg-[#24303F] text-white min-h-screen">
         <div className="ag-theme-alpine-dark" style={{ height: '300px', width: '100%' }}>
@@ -1307,74 +1333,79 @@ const ProjectAnalytics = () => {
         </div>
 
         {/* Modal for displaying specific row data */}
-        {isModalOpen && clickedRowData && (
-          <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 overflow-scroll h-[500px]">
-            <div className="bg-white text-black p-6 rounded-lg w-2/3 max-w-3xl">
-              <h2 className="text-xl font-semibold mb-4">Details</h2>
-              <div className="space-y-2">
-                <div><strong className='text-xl font-extrabold'>Id:</strong><span className='text-xl ml-3'>{clickedRowData.id}</span></div>
-                <div><strong className='text-xl font-extrabold'>Name:</strong><span className='text-xl ml-3'>{clickedRowData.name}</span></div>
-                <div><strong className='text-xl font-extrabold'>Occupation:</strong><span className='text-xl ml-3'>{clickedRowData.occupation}</span></div>
-                <div><strong className='text-xl font-extrabold'>Address:</strong><span className='text-xl ml-3'>{clickedRowData.address}</span></div>
-                <div><strong className='text-xl font-extrabold'>Phone:</strong><span className='text-xl ml-3'>{clickedRowData.phone}</span></div>
-                <div><strong className='text-xl font-extrabold'>District:</strong><span className='text-xl ml-3'>{clickedRowData.district_corporation}</span></div>
-                <div><strong className='text-xl font-extrabold'>Taluka:</strong><span className='text-xl ml-3'>{clickedRowData.taluka_zone}</span></div>
-                <div><strong className='text-xl font-extrabold'>Village:</strong><span className='text-xl ml-3'>{clickedRowData.village_area}</span></div>
-                <div><strong className='text-xl font-extrabold'>Subject:</strong><span className='text-xl'>{clickedRowData.subject}</span></div>
-                <div><strong className='text-xl font-extrabold'>Department Routing:</strong><span className='text-xl'>{clickedRowData.depr_rout}</span></div>
-                <div><strong className='text-xl font-extrabold'>Message:</strong><span className='text-xl'>{clickedRowData.message}</span></div>
-                {/* <div><strong className='text-xl font-extrabold'>Sentiment Polarity:</strong><span className='text-xl ml-3'>{clickedRowData.sentiment_cal_pol}</span></div> */}
-                <div>
-                  <strong className="text-xl font-extrabold">Email:</strong>
-                  <span className="text-xl ml-3">
-                    {clickedRowData.email ? clickedRowData.email : '-'}
-                  </span>
-                </div>
-                {/* <div><strong className='text-xl font-extrabold'>Created At:</strong><span className='text-xl'>{clickedRowData.created_at}</span></div> */}
+        <div className='h-[600px] overflow-auto'>
+          {isModalOpen && clickedRowData && (
+            <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50">
+              <div className="bg-white text-black p-6 rounded-lg w-2/3 max-w-3xl">
+                <h2 className="text-xl font-semibold mb-4">Details</h2>
 
-                {/* Level 0 Scrutiny Radio Buttons */}
-                <div>
-                  <strong className="text-xl font-extrabold">Suggested Level 0 Scrutiny:</strong>
-                  <div className="flex items-center gap-5 mt-3">
+                <div className="overflow-auto max-h-[400px]">  {/* Added scrollable area */}
+                  <div className="space-y-2">
+                    <div><strong className='text-xl font-extrabold'>Id:</strong><span className='text-xl ml-3'>{clickedRowData.id}</span></div>
+                    <div><strong className='text-xl font-extrabold'>Name:</strong><span className='text-xl ml-3'>{clickedRowData.name}</span></div>
+                    <div><strong className='text-xl font-extrabold'>Occupation:</strong><span className='text-xl ml-3'>{clickedRowData.occupation}</span></div>
+                    <div><strong className='text-xl font-extrabold'>Address:</strong><span className='text-xl ml-3'>{clickedRowData.address}</span></div>
+                    <div><strong className='text-xl font-extrabold'>Phone:</strong><span className='text-xl ml-3'>{clickedRowData.phone}</span></div>
+                    <div><strong className='text-xl font-extrabold'>District:</strong><span className='text-xl ml-3'>{clickedRowData.district_corporation}</span></div>
+                    <div><strong className='text-xl font-extrabold'>Taluka:</strong><span className='text-xl ml-3'>{clickedRowData.taluka_zone}</span></div>
+                    <div><strong className='text-xl font-extrabold'>Village:</strong><span className='text-xl ml-3'>{clickedRowData.village_area}</span></div>
+                    <div><strong className='text-xl font-extrabold'>Subject:</strong><span className='text-xl'>{clickedRowData.subject}</span></div>
+                    <div><strong className='text-xl font-extrabold'>Department Routing:</strong><span className='text-xl'>{clickedRowData.depr_rout}</span></div>
+                    <div><strong className='text-xl font-extrabold'>Message:</strong><span className='text-xl'>{clickedRowData.message}</span></div>
+                    {/* <div><strong className='text-xl font-extrabold'>Sentiment Polarity:</strong><span className='text-xl ml-3'>{clickedRowData.sentiment_cal_pol}</span></div> */}
                     <div>
-                      <input
-                        type="radio"
-                        id="accept"
-                        name="level0Scrutiny"
-                        value="accept"
-                        checked={level0Scrutiny === 'Accept'}
-                        onChange={handleRadioChange}
-                        className="mr-2"
-                      />
-                      <label htmlFor="accept" className="text-xl">Accept</label>
+                      <strong className="text-xl font-extrabold">Email:</strong>
+                      <span className="text-xl ml-3">
+                        {clickedRowData.email ? clickedRowData.email : '-'}
+                      </span>
                     </div>
+                    {/* <div><strong className='text-xl font-extrabold'>Created At:</strong><span className='text-xl'>{clickedRowData.created_at}</span></div> */}
+
+                    {/* Level 0 Scrutiny Radio Buttons */}
                     <div>
-                      <input
-                        type="radio"
-                        id="reject"
-                        name="level0Scrutiny"
-                        value="reject"
-                        checked={level0Scrutiny === 'Reject'}
-                        onChange={handleRadioChange}
-                        className="mr-2"
-                      />
-                      <label htmlFor="reject" className="text-xl">Reject</label>
+                      <strong className="text-xl font-extrabold">Suggested Level 0 Scrutiny:</strong>
+                      <div className="flex items-center gap-5 mt-3">
+                        <div>
+                          <input
+                            type="radio"
+                            id="accept"
+                            name="level0Scrutiny"
+                            value="accept"
+                            checked={level0Scrutiny === 'Accept'}
+                            onChange={handleRadioChange}
+                            className="mr-2"
+                          />
+                          <label htmlFor="accept" className="text-xl">Accept</label>
+                        </div>
+                        <div>
+                          <input
+                            type="radio"
+                            id="reject"
+                            name="level0Scrutiny"
+                            value="reject"
+                            checked={level0Scrutiny === 'Reject'}
+                            onChange={handleRadioChange}
+                            className="mr-2"
+                          />
+                          <label htmlFor="reject" className="text-xl">Reject</label>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="mt-4 flex justify-end">
-                <button
-                  onClick={handleCloseModal}
-                  className="bg-red-500 text-white px-6 py-2 rounded-lg"
-                >
-                  Close
-                </button>
+                <div className="mt-4 flex justify-end">
+                  <button
+                    onClick={handleCloseModal}
+                    className="bg-red-500 text-white px-6 py-2 rounded-lg"
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
