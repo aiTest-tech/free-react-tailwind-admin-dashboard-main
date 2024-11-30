@@ -1,14 +1,22 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export interface WTCData{
+export interface WTCData {
+  id: number;
   subject: string;
-  message:string;
-  email:string;
-  created_at:string;
-  lo_sc:string;
-  sentiment_cal_gra:string;
-  sentiment_cal_pol:string;
-  depr_rout:string
+  name:string;
+  message: string;
+  email: string;
+  created_at: string;
+  lo_sc: string;
+  sentiment_cal_gra: string;
+  sentiment_cal_pol: string;
+  depr_rout: string;
+  phone: string;
+  occupation:string;
+  address:string;
+  district_corporation:string;
+  taluka_zone:string;
+  village_area:string;
 }
 
 // Define a service using a base URL and expected endpoints

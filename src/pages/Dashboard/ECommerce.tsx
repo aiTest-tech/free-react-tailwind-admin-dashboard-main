@@ -31,18 +31,18 @@ const ECommerce: React.FC = () => {
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
-        <CardDataStats title="Write To CMO" total="3.456" rate="0.43%" levelUp>
+        <CardDataStats title="Write To CMO" total="1041" rate="0.43%" levelUp>
           <img src="images\gujarat.svg" alt="gujarat" className='w-[30px] h-[30px]' />
           {/* <img src="publicimages/totalapplication.png" alt="" /> */}
         </CardDataStats>
-        <CardDataStats title="Jansanvad" total="45.2" rate="4.35%" levelUp>
+        <CardDataStats title="Jansanvad" total="72" rate="4.35%" levelUp>
           <MdOutlinePendingActions size={35} />
         </CardDataStats>
-        <CardDataStats title="S.W.A.G.A.T" total="2.450" rate="2.59%" levelUp>
+        <CardDataStats title="S.W.A.G.A.T" total="0" rate="2.59%" levelUp>
           <FaPhoneAlt />
           {/* <img src="https://swagat.gujarat.gov.in/img/swagat_png.png" alt="" className='w-[30px] h-[30px]' /> */}
         </CardDataStats>
-        <CardDataStats title="Add Project" total="3.456" rate="0.95%" levelDown>
+        <CardDataStats title="Add Project" total="" rate="0.95%" levelDown>
           <FaPlus />
         </CardDataStats>
       </div>

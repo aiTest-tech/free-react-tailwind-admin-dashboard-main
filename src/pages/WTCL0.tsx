@@ -19,18 +19,18 @@ const WTCL0 = () => {
     return (
         <>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5 mb-3">
-                <CardDataStats title="Total Application" total="3.456" rate="0.43%" levelUp>
+                <CardDataStats title="Total Application" total="1041" rate="0.43%" levelUp>
                     {/* <img src="images/gujarat.svg" alt="gujarat" className='w-[30px] h-[30px]' /> */}
                     <img src="/public/images/application.svg" alt="" className='flex justify-center items-center w-[35px] h-[35px]' />
                 </CardDataStats>
-                <CardDataStats title="Total Pending Scrutiny" total="45.2" rate="4.35%" levelUp>
+                <CardDataStats title="Total Pending Scrutiny" total="25" rate="4.35%" levelUp>
                     <MdOutlinePendingActions size={35} />
                 </CardDataStats>
-                <CardDataStats title="Total Application" total="2.450" rate="2.59%" levelUp>
+                <CardDataStats title="Today's Application" total="140" rate="2.59%" levelUp>
                     <FaPhoneAlt />
                     {/* <img src="https://swagat.gujarat.gov.in/img/swagat_png.png" alt="" className='w-[30px] h-[30px]' /> */}
                 </CardDataStats>
-                <CardDataStats title="Daily Avg Application" total="3.456" rate="0.95%" levelDown>
+                <CardDataStats title="Daily Avg Application" total="166" rate="0.95%" levelDown>
                     <FaPlus />
                 </CardDataStats>
             </div>
