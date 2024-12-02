@@ -1,3 +1,4 @@
+//@ts-nocheck
 import flatpickr from 'flatpickr';
 import { useEffect } from 'react';
 

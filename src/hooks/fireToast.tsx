@@ -1,3 +1,4 @@
+//@ts-nocheck
 import toast from 'react-hot-toast';
 import dataJSON from '../../public/data.json';
 

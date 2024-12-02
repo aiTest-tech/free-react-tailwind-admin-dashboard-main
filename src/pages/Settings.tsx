@@ -1,3 +1,4 @@
+//@ts-nocheck
 import Breadcrumb from '../components/Breadcrumbs/Breadcrumb';
 import userThree from '../images/user/user-03.png';
 

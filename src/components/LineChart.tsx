@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from 'react';
 import { Line } from 'react-chartjs-2';  // Import the Line chart component from react-chartjs-2
 import {

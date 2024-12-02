@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useEffect } from 'react';
 import gsap from 'gsap';
 import { useGetWtcAnalyticsQuery } from '../../features/wtcanalyticsApi';

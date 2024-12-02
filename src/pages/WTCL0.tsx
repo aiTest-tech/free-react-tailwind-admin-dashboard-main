@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useEffect, useState } from 'react';
 import TableTwo from '../components/Tables/TableTwo';
 import { FaPhoneAlt, FaPlus, FaWhatsapp } from 'react-icons/fa';

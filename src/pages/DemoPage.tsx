@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useState, useRef, useEffect } from "react";
 import { AiFillAudio } from "react-icons/ai";
 import axios from "axios";

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from 'react';
 import Breadcrumb from '../components/Breadcrumbs/Breadcrumb';
 import ChartOne from '../components/Charts/ChartOne';

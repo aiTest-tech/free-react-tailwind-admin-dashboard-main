@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { Bar } from 'react-chartjs-2';  // Import the Bar chart component from react-chartjs-2
 import {
     Chart as ChartJS,

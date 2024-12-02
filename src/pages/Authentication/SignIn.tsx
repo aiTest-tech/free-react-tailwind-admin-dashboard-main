@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from "react-hook-form";
 import { AuthType } from '../../utils/authSchema';

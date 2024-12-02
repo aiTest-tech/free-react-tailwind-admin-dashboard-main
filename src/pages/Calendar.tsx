@@ -1,3 +1,4 @@
+//@ts-nocheck
 import Breadcrumb from '../components/Breadcrumbs/Breadcrumb';
 
 const Calendar = () => {

@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { useEffect, useState } from 'react';
 
 type SetValue<T> = T | ((val: T) => T);

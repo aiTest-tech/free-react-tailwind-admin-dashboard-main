@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useMemo, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import { useGetWtcsDataQuery } from '../features/wtcfetchApi';

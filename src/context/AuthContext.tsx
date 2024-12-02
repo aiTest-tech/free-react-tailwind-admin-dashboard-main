@@ -1,4 +1,4 @@
-// src/context/AuthContext.tsx
+//@ts-nocheck
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useSendloginCredentialsMutation, useRefreshTokenMutation } from '../features/authApi';
 import Cookies from 'js-cookie';

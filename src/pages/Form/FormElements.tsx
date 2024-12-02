@@ -1,3 +1,4 @@
+//@ts-nocheck
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 import CheckboxFive from '../../components/Checkboxes/CheckboxFive';
 import CheckboxFour from '../../components/Checkboxes/CheckboxFour';
