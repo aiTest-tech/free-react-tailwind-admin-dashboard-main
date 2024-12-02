@@ -50,8 +50,8 @@ interface ClickedRowDataInterface {
 }
 
 const ComingSoonModal = (props: ComingSoonModalProps) => (
-  <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-100">
-    <div className="bg-white text-black p-6 rounded-lg w-2/3 max-w-3xl shadow-2xl overflow-y-auto max-h-[80vh]">
+  <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-100 mt-10 sm:w-screen">
+    <div className="bg-white text-black p-6 rounded-lg w-2/3 max-w-3xl shadow-2xl overflow-y-auto max-h-[85vh]">
       <div className='flex justify-between items-center pb-2'>
         <h1 className='w-[50px] h-[50px] rounded-full bg-black text-white flex justify-center items-center text-2xl'>{props.id}</h1>
         <h1 className='text-xl font-extrabold'>Type: <span className='text-orange-600'>{props.type}</span></h1>
@@ -173,19 +173,110 @@ const ProjectAnalytics = () => {
     setLevel0Scrutiny(e.target.value as 'Accept' | 'Reject');
   };
 
+  // const columnDefs = useMemo(() => [
+  //   { headerName: '', checkboxSelection: true, width: 50 },
+  //   { headerName: "ID", width: 80, field: 'id', sortable: true },
+  //   { headerName: 'Level 0 Scrutiny', field: 'lo_sc', sortable: true, filter: true },
+  //   { headerName: 'Sentiment Polarity', field: 'sentiment_cal_pol', sortable: true, filter: true },
+  //   { headerName: 'Subject', field: 'subject', sortable: true, filter: true },
+  //   { headerName: 'Message', field: 'message', sortable: true, filter: true },
+  //   { headerName: 'Sentiment Gravity', field: 'sentiment_cal_gra', sortable: true },
+  //   { headerName: 'Department Routing', field: 'depr_rout', sortable: true },
+  //   { headerName: 'Phone', field: 'phone', sortable: true },
+  //   { headerName: 'Email', field: 'email', sortable: true },
+  //   { headerName: 'Created At', field: 'created_at', sortable: true, filter: true },
+  // ], []);
+
   const columnDefs = useMemo(() => [
-    { headerName: '', checkboxSelection: true, width: 50 },
-    { headerName: "ID", width: 80, field: 'id', sortable: true },
-    { headerName: 'Level 0 Scrutiny', field: 'lo_sc', sortable: true, filter: true },
-    { headerName: 'Sentiment Polarity', field: 'sentiment_cal_pol', sortable: true, filter: true },
-    { headerName: 'Subject', field: 'subject', sortable: true, filter: true },
-    { headerName: 'Message', field: 'message', sortable: true, filter: true },
-    { headerName: 'Sentiment Gravity', field: 'sentiment_cal_gra', sortable: true },
-    { headerName: 'Department Routing', field: 'depr_rout', sortable: true },
-    { headerName: 'Phone', field: 'phone', sortable: true },
-    { headerName: 'Email', field: 'email', sortable: true },
-    { headerName: 'Created At', field: 'created_at', sortable: true, filter: true },
-  ], []);
+    {
+      headerName: '',
+      checkboxSelection: true,
+      width: 50
+    },
+    {
+      headerName: "id",
+      width: 80,
+      field: 'id',
+      sortable: true,
+    },
+    {
+      headerName: 'Level 0 Scrutiny',
+      field: 'lo_sc',
+      sortable: true,
+      filter: true,
+      cellClassRules: {
+        'text-green-500': (params) => params.value && params.value.toLowerCase().trim() === 'accept',
+        'text-red-500': (params) => params.value && params.value.toLowerCase().trim() === 'reject',
+      },
+    },
+    {
+      headerName: 'Sentiment Polarity',
+      field: 'sentiment_cal_pol',
+      sortable: true,
+      filter: true,
+      width: 160,
+      cellClassRules: {
+        'text-green-500': (params) => params.value && params.value.toLowerCase().trim() === 'positive',
+        'text-red-500': (params) => params.value && params.value.toLowerCase().trim() === 'negative',
+        'text-gray-500': (params) => params.value && params.value.toLowerCase().trim() === 'neutral',
+      },
+    },
+    {
+      headerName: 'Subject',
+      field: 'subject',
+      sortable: true,
+      filter: true,
+      width: 200,
+    },
+    {
+      headerName: 'Message',
+      field: 'message',
+      sortable: true,
+      filter: true,
+      width: 500,
+      // Rendering the button in the Message column
+      cellRendererFramework: (params: any) => {
+        return (
+          <button
+            className="text-blue-500 underline"
+            onClick={() => handleRowClick(params)} // Open the modal with full row data
+          >
+            View Details
+          </button>
+        );
+      },
+    },
+    {
+      headerName: 'Sentiment Gravity',
+      field: 'sentiment_cal_gra',
+      sortable: true,
+      filter: true,
+    },
+    {
+      headerName: 'Department Routing',
+      field: 'depr_rout',
+      sortable: true,
+      filter: true,
+    },
+    {
+      headerName: "phone",
+      field: 'phone',
+      sortable: true,
+      width: 200
+    },
+    {
+      headerName: "email",
+      field: 'email',
+      sortable: true,
+      width: 200
+    },
+    {
+      headerName: 'Created At',
+      field: 'created_at',
+      sortable: true,
+      filter: true,
+    },
+  ], [])
 
   if (isLoading) return <div><Loader /></div>;
   if (error) return <div>Error fetching data</div>;
@@ -198,10 +289,10 @@ const ProjectAnalytics = () => {
   }
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col bg-[#24303F]">
       <div className="flex flex-grow">
-        <main className="p-8 w-full">
-          <div className="ag-theme-alpine" style={{ height: '600px' }}>
+        <main className=" w-full">
+          {/* <div className="ag-theme-alpine" style={{ height: '600px' }}>
             <AgGridReact
               rowData={data}
               columnDefs={columnDefs}
@@ -210,6 +301,18 @@ const ProjectAnalytics = () => {
               domLayout="autoHeight"
               onRowClicked={handleRowClick}
             />
+          </div> */}
+          <div className="bg-[#24303F] text-white">
+            <div className="ag-theme-alpine-dark" style={{ height: '300px', width: '100%' }}>
+              <AgGridReact
+                columnDefs={columnDefs}
+                rowData={data as RowData[]}
+                pagination={true}
+                paginationPageSize={10}
+                domLayout="autoHeight"
+                onRowClicked={handleRowClick} // Register row click handler
+              />
+            </div>
           </div>
 
           {isModalOpen && (
