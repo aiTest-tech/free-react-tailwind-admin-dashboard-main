@@ -22,7 +22,7 @@ export interface WTCData {
 // Define a service using a base URL and expected endpoints
 export const wtcApi = createApi({
   reducerPath: 'wtcapi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://10.10.2.179:6162/api/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://10.10.2.179:5555/api/' }),
   endpoints: (builder) => ({
     getWtcsData: builder.query<WTCData[], void>({
       query: () => `wtc/`, // Adjust this path to match your actual endpoint

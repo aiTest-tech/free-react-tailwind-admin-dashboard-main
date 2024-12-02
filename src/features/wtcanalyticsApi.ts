@@ -17,7 +17,7 @@ export interface WtcAnalytics {
 export const wtcAnalyticsApi = createApi({
   reducerPath: 'brijeshAnalyticsApi',
   // baseQuery: fetchBaseQuery({ baseUrl: 'http://10.10.2.179:6162/api/wtc/' }),
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://10.10.2.179:6162/api/wtc/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://10.10.2.179:5555/api/wtc/' }),
   endpoints: (builder) => ({
     getWtcAnalytics: builder.query<WtcAnalytics, void>({
       query: () => `scrutiny-statistics/`, 

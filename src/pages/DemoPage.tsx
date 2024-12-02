@@ -126,7 +126,7 @@ const DemoPage = () => {
             formData.append("file", audioBlob);
             formData.append("lang", language);
 
-            const response = await axios.post("http://10.10.2.179:6162/api/speech-to-text2/", formData, {
+            const response = await axios.post("http://10.10.2.179:5555/api/speech-to-text2/", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     // "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzMzOTg2MzIxLCJpYXQiOjE3MzI2OTAzMjEsImp0aSI6ImIyNGYxZjMzMWIzNTRmYjI5YjcxZDliZDU2YmJiZThiIiwidXNlcl9pZCI6N30.LLv0sLwb34LOgekjZXf3LzBpFsX8sgGamMRuSqHyDZs"
@@ -169,7 +169,7 @@ const DemoPage = () => {
             formData.append("id", transcriptionId);
             formData.append("text", editedTranscription);
 
-            const response = await axios.post("http://10.10.2.179:6162/api/submit-audio/", formData, {
+            const response = await axios.post("http://10.10.2.179:5555/api/submit-audio/", formData, {
                 headers: {
                     "Content-Type": "mutlipart/form-data"
                 }
@@ -192,7 +192,7 @@ const DemoPage = () => {
                 const formData = new FormData();
                 formData.append("data", editedTranscription);
                 formData.append("lang", language);
-                const response = await axios.post("http://10.10.2.179:6162/api/sentiment/", formData, {
+                const response = await axios.post("http://10.10.2.179:5555/api/sentiment/", formData, {
                     headers: {
                         "Content-Type": "multipart/form-data"
                     }
@@ -203,7 +203,7 @@ const DemoPage = () => {
                 const formData = new FormData();
                 formData.append("data", transcription);
                 formData.append("lang", language);
-                const response = await axios.post("http://10.10.2.179:6162/api/sentiment/", formData, {
+                const response = await axios.post("http://10.10.2.179:5555/api/sentiment/", formData, {
                     headers: {
                         "Content-Type": "multipart/form-data"
                     }

@@ -12,7 +12,7 @@ export interface TypeDistributionInterface {
 // Define a service using a base URL and expected endpoints
 export const TypeDistributionApi = createApi({
   reducerPath: 'analyticsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://10.10.2.179:6162/api/wtc/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://10.10.2.179:5555/api/wtc/' }),
   endpoints: (builder) => ({
     getTypeDistributionApi: builder.query<TypeDistributionInterface[], void>({
       query: () => `type-distribution/`, // Adjust this path to match your actual endpoint

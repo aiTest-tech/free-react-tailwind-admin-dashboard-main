@@ -189,7 +189,9 @@ function App() {
           <DefaultLayout>
             <PageTitle title="Try it out" />
             {/* <WTCL0 /> */}
-            <ProjectAnalytics />
+            <div className='relative'>
+              <ProjectAnalytics />
+            </div>
           </DefaultLayout>} />
       </Routes>
     </>

@@ -107,7 +107,7 @@ const TableScrutiny = (props: RequestData) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://10.10.2.179:6162/api/analytics/');
+        const response = await fetch('http://10.10.2.179:5555/api/analytics/');
         const data = await response.json();
         // Assuming the 'sentiment' data is part of the response
         setApiData(data.l1_scrutiny);
