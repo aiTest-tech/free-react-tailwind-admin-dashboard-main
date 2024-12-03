@@ -67,27 +67,27 @@ const TableTwo = () => {
         className="grid grid-cols-6 border-t border-stroke py-4.5 px-4 dark:border-strokedark sm:grid-cols-8 md:px-6 2xl:px-7.5 table-row"
       >
         <div className="col-span-3 flex items-center">
-          <p className="text-sm text-black dark:text-white">
+          <p className=" text-black dark:text-white text-xl font-extrabold">
             {data?.total_accepted || 0} {/* Display total accepted from the API */}
           </p>
         </div>
         <div className="col-span-2 hidden items-center sm:flex">
-          <p className="text-sm text-black dark:text-white">
-            Total Accepted Category 
+          <p className=" text-black dark:text-white text-xl font-extrabold">
+            --
           </p>
         </div>
         <div className="col-span-1 flex items-center">
-          <p className="text-sm text-black dark:text-white">
+          <p className=" text-black dark:text-white text-xl font-extrabold">
             {data?.machine_accepted || 0} {/* Display machine accepted */}
           </p>
         </div>
         <div className="col-span-1 flex items-center">
-          <p className="text-sm text-black dark:text-white">
+          <p className=" text-black dark:text-white text-xl font-extrabold">
             {data?.machine_rejected || 0} {/* Display machine rejected */}
           </p>
         </div>
         <div className="col-span-1 flex items-center">
-          <p className="text-sm text-meta-3">
+          <p className="text-meta-3 text-xl font-extrabold">
             {data?.accuracy || 0} {/* Display accuracy */}
           </p>
         </div>

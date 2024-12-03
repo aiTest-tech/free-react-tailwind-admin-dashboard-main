@@ -32,8 +32,10 @@ const BarChart = () => {
                 label: 'Count of Applications',  
                 // data: [12, 19, 3, 5],  // Data for the bars
                 data: importantdata,  // Data for the bars
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',  // Bar color
-                borderColor: 'rgba(75, 192, 192, 1)',  // Border color for the bars
+                // backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                backgroundColor: '#199898',
+                // borderColor: 'rgba(75, 192, 192, 1)',  // Border color for the bars
+                borderColor: '#34315c',  // Border color for the bars
                 borderWidth: 1,  // Border width
             },
         ],

@@ -194,6 +194,17 @@ function App() {
               <ProjectAnalytics />
             </div>
           </DefaultLayout>} />
+
+
+
+        <Route path='project/:projectname/report' element={
+          <DefaultLayout>
+            <PageTitle title="Try it out" />
+            {/* <WTCL0 /> */}
+            <div className='relative'>
+              <ProjectAnalytics />
+            </div>
+          </DefaultLayout>} />
       </Routes>
     </>
   );
