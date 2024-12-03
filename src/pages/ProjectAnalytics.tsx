@@ -343,3 +343,176 @@ const ProjectAnalytics = () => {
 };
 
 export default ProjectAnalytics;
+
+
+// const ProjectAnalytics = () => {
+//   const { data, error, isLoading } = useGetWtcsDataQuery();
+//   const [isModalOpen, setIsModalOpen] = useState(false);
+//   const [clickedRowData, setClickedRowData] = useState<ClickedRowDataInterface | null>(null);
+//   const [level0Scrutiny, setLevel0Scrutiny] = useState<'Accept' | 'Reject' | null>(null);
+
+//   const handleRowClick = (event: any) => {
+//     const rowData = event.data;
+//     setClickedRowData(rowData);
+//     console.log("brijesh clickedRowData", rowData);
+//     setLevel0Scrutiny(rowData.lo_sc || ''); // Set default value
+//     setIsModalOpen(true); // Open the modal
+//   };
+
+//   const handleCloseModal = () => {
+//     setIsModalOpen(false);
+//     setClickedRowData(null);
+//   };
+
+//   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+//     console.log("brijesh event target", e.target.value);
+//     setLevel0Scrutiny(e.target.value as 'Accept' | 'Reject');
+//   };
+
+//   const columnDefs = useMemo(() => [
+//     {
+//       headerName: '',
+//       checkboxSelection: true,
+//       width: 50
+//     },
+//     {
+//       headerName: "id",
+//       width: 80,
+//       field: 'id',
+//       sortable: true,
+//     },
+//     {
+//       headerName: 'Level 0 Scrutiny',
+//       field: 'lo_sc',
+//       sortable: true,
+//       filter: true,
+//       cellClassRules: {
+//         'text-green-500': (params) => params.value && params.value.toLowerCase().trim() === 'accept',
+//         'text-red-500': (params) => params.value && params.value.toLowerCase().trim() === 'reject',
+//       },
+//     },
+//     {
+//       headerName: 'Sentiment Polarity',
+//       field: 'sentiment_cal_pol',
+//       sortable: true,
+//       filter: true,
+//       width: 160,
+//       cellClassRules: {
+//         'text-green-500': (params) => params.value && params.value.toLowerCase().trim() === 'positive',
+//         'text-red-500': (params) => params.value && params.value.toLowerCase().trim() === 'negative',
+//         'text-gray-500': (params) => params.value && params.value.toLowerCase().trim() === 'neutral',
+//       },
+//     },
+//     {
+//       headerName: 'Subject',
+//       field: 'subject',
+//       sortable: true,
+//       filter: true,
+//       width: 200,
+//     },
+//     {
+//       headerName: 'Message',
+//       field: 'message',
+//       sortable: true,
+//       filter: true,
+//       width: 500,
+//       // Rendering the button in the Message column
+//       cellRendererFramework: (params: any) => {
+//         return (
+//           <button
+//             className="text-blue-500 underline"
+//             onClick={() => handleRowClick(params)} // Open the modal with full row data
+//           >
+//             View Details
+//           </button>
+//         );
+//       },
+//     },
+//     {
+//       headerName: 'Sentiment Gravity',
+//       field: 'sentiment_cal_gra',
+//       sortable: true,
+//       filter: true,
+//     },
+//     {
+//       headerName: 'Department Routing',
+//       field: 'depr_rout',
+//       sortable: true,
+//       filter: true,
+//     },
+//     {
+//       headerName: "phone",
+//       field: 'phone',
+//       sortable: true,
+//       width: 200
+//     },
+//     {
+//       headerName: "email",
+//       field: 'email',
+//       sortable: true,
+//       width: 200
+//     },
+//     {
+//       headerName: 'Created At',
+//       field: 'created_at',
+//       sortable: true,
+//       filter: true,
+//     },
+//   ], []);
+
+//   if (isLoading) return <SkeletonLoader />;  // Show skeleton loader while data is loading
+//   if (error) return <div>Error fetching data</div>;
+//   if (!data || data.length === 0) {
+//     return (
+//       <div className="w-full text-center mt-20">
+//         <h2 className="text-3xl text-indigo-600 font-bold">No data available.</h2>
+//       </div>
+//     );
+//   }
+
+//   return (
+//     <div className="flex flex-col bg-[#24303F]">
+//       <div className="flex flex-grow">
+//         <main className="w-full">
+//           <div className="bg-[#24303F] text-white">
+//             <div className="ag-theme-alpine-dark" style={{ height: '300px', width: '100%' }}>
+//               <AgGridReact
+//                 columnDefs={columnDefs}
+//                 rowData={data as RowData[]}
+//                 pagination={true}
+//                 paginationPageSize={10}
+//                 domLayout="autoHeight"
+//                 onRowClicked={handleRowClick} // Register row click handler
+//               />
+//             </div>
+//           </div>
+
+//           {isModalOpen && (
+//             <ComingSoonModal
+//               handleCloseModal={handleCloseModal}
+//               level0Scrutiny={level0Scrutiny}
+//               handleRadioChange={handleRadioChange}
+//               id={clickedRowData?.id}
+//               name={clickedRowData?.name}
+//               occupation={clickedRowData?.occupation}
+//               address={clickedRowData?.address}
+//               phone={clickedRowData?.phone}
+//               email={clickedRowData?.email}
+//               district_corporation={clickedRowData?.district_corporation}
+//               taluka_zone={clickedRowData?.taluka_zone}
+//               village_area={clickedRowData?.village_area}
+//               department={clickedRowData?.department}
+//               type={clickedRowData?.type}
+//               subject={clickedRowData?.subject}
+//               message={clickedRowData?.message}
+//               sentiment={clickedRowData?.sentiment_cal_pol}
+//               sentiment_gravity={clickedRowData?.sentiment_cal_gra}
+//             />
+//           )}
+//         </main>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default ProjectAnalytics;
