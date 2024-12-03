@@ -20,6 +20,7 @@ import DefaultLayout from './layout/DefaultLayout';
 import ProjectAnalytics from './pages/ProjectAnalytics';
 import DemoPage from './pages/DemoPage';
 import WTCL0 from './pages/WTCL0';
+import ProjectReport from './pages/ProjectReport';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -202,7 +203,8 @@ function App() {
             <PageTitle title="Try it out" />
             {/* <WTCL0 /> */}
             <div className='relative'>
-              <ProjectAnalytics />
+              {/* <ProjectAnalytics /> */}
+              <ProjectReport />
             </div>
           </DefaultLayout>} />
       </Routes>

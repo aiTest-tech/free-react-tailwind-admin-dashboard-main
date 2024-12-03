@@ -137,7 +137,7 @@ const ComingSoonModal = (props: ComingSoonModalProps) => {
 
         {/* Department, Subject, and Message Section */}
         <div className="w-full h-[2px] bg-slate-800 mt-2"></div>
-        <div className="flex justify-start items-center">
+        <div className="flex justify-start items-start">
           <h1 className="font-extrabold text-2xl px-2 min-w-[150px]">Department:</h1>
           {props.department === null ? <><div className="w-[50px] h-[3px] bg-red"></div></> : <h2 className=" px-2 text-xl max-w[500px]">{props.department}</h2>}
         </div>
@@ -238,7 +238,7 @@ const ToDate = () => {
   );
 };
 
-const ProjectAnalytics = () => {
+const ProjectReport = () => {
   const { data, error, isLoading } = useGetWtcsDataQuery();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [clickedRowData, setClickedRowData] = useState<ClickedRowDataInterface | null>(null);
@@ -367,7 +367,23 @@ const ProjectAnalytics = () => {
 
   return (
     <div className="flex flex-col bg-[#24303F] p-4">
-      
+      <div className='flex flex-wrap justify-between gap-4'>
+        <div className="flex items-center gap-4">
+          <FromDate />
+          <ToDate />
+        </div>
+
+        {/* Global Search Input */}
+        <div className="flex items-center gap-2">
+          <input
+            type="search"
+            placeholder="Search by mobile, subject, or email"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            className="p-2 border rounded-md"
+          />
+        </div>
+      </div>
 
       <div className="flex flex-grow mt-6">
         <main className="w-full">
@@ -384,30 +400,8 @@ const ProjectAnalytics = () => {
           </div>
         </main>
       </div>
-
-      {isModalOpen && (
-        <ComingSoonModal
-          handleCloseModal={handleCloseModal}
-          level0Scrutiny={level0Scrutiny}
-          level0Scrutinyprops={level0Scrutiny}
-          handleRadioChange={handleRadioChange}
-          id={clickedRowData?.id}
-          name={clickedRowData?.name}
-          occupation={clickedRowData?.occupation}
-          address={clickedRowData?.address}
-          phone={clickedRowData?.phone}
-          email={clickedRowData?.email}
-          district_corporation={clickedRowData?.district_corporation}
-          taluka_zone={clickedRowData?.taluka_zone}
-          village_area={clickedRowData?.village_area}
-          department={clickedRowData?.department}
-          type={clickedRowData?.type}
-          subject={clickedRowData?.subject}
-          message={clickedRowData?.message}
-        />
-      )}
     </div>
   );
 };
 
-export default ProjectAnalytics;
+export default ProjectReport;
