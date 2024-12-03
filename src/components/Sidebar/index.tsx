@@ -170,6 +170,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               </span>
                             </NavLink>
                           </li>
+                          <li>
+                            <NavLink
+                              to={'/project/wtc/report'}
+                              className={`block px-6 py-2 rounded-lg text-gray-300 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition duration-200 ease-in-out transform hover:scale-105 ${pathname.includes("L0") ? "bg-gray-700" : ""}`}
+                            >
+                              <span className="flex items-center gap-4">
+                                Report
+                              </span>
+                            </NavLink>
+                          </li>
                         </ul>
                       )}
                     </li>

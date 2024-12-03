@@ -1,0 +1,16 @@
+/* Change the background color of the selected date */
+.react-datepicker__day--selected {
+  background-color: #4caf50; /* You can change this to any color you want */
+  color: white; /* Make the text color white for better contrast */
+}
+
+/* Optionally, change the background color when hovering over a date */
+.react-datepicker__day:hover {
+  background-color: #cfd8dc; /* Light gray color for hover */
+}
+
+/* Change the background color of today's date */
+.react-datepicker__day--today {
+  background-color: #ff9800; /* You can change this to any color you want */
+  color: white;
+}
