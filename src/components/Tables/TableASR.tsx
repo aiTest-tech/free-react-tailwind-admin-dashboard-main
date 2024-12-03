@@ -6,6 +6,26 @@ interface RequestData {
   title: String
 }
 
+const renderSkeleton = () => (
+  <div className="animate-pulse">
+    {[...Array(2)].map((_, index) => (
+      <div
+        className={`grid grid-cols-3 sm:grid-cols-6 border-b border-stroke dark:border-strokedark`}
+        key={index}
+      >
+        {[...Array(6)].map((_, colIndex) => (
+          <div
+            className="p-2.5 xl:p-5 flex justify-center items-center"
+            key={colIndex}
+          >
+            <div className="w-full h-5 bg-gray-300 dark:bg-gray-700 rounded"></div>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+);
+
 const TableASR = (props: RequestData) => {
   const [apiData, setApiData] = useState<any>(null); // To store the fetched data
   const [isLoading, setIsLoading] = useState(true); // Loading state
@@ -20,7 +40,7 @@ const TableASR = (props: RequestData) => {
 
         // Assuming the 'asr' data is part of the response
         setApiData(data.asr);
-        setIsLoading(false); // Set loading to false once data is fetched
+        setIsLoading(false);
       } catch (error) {
         setIsError(true);
         setIsLoading(false);
@@ -31,9 +51,6 @@ const TableASR = (props: RequestData) => {
     fetchData(); // Trigger fetch when component mounts
   }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
 
   if (isError) {
     return <div>Error loading data. Please try again later.</div>;
@@ -82,41 +99,47 @@ const TableASR = (props: RequestData) => {
         </div>
 
         {/* Map through the API data and display the table rows */}
-        {apiData?.map((brand: any, key: number) => (
-          <div
-            className={`grid grid-cols-3 sm:grid-cols-6 ${key === apiData.length - 1
-              ? ''
-              : 'border-b border-stroke dark:border-strokedark'
-              }`}
-            key={key}
-          >
-            <div className="flex items-center gap-3 p-2.5 xl:p-5">
-              <p className="hidden text-xl text-black dark:text-white sm:block font-extrabold">
-                <NavLink to={`/project/${brand.project}`}>{brand.project}</NavLink>
-              </p>
-            </div>
+        {
+          isLoading ? renderSkeleton() : (
+            <>
+              {apiData?.map((brand: any, key: number) => (
+                <div
+                  className={`grid grid-cols-3 sm:grid-cols-6 ${key === apiData.length - 1
+                    ? ''
+                    : 'border-b border-stroke dark:border-strokedark'
+                    }`}
+                  key={key}
+                >
+                  <div className="flex items-center gap-3 p-2.5 xl:p-5">
+                    <p className="hidden text-xl text-black dark:text-white sm:block font-extrabold">
+                      <NavLink to={`/project/${brand.project}`}>{brand.project}</NavLink>
+                    </p>
+                  </div>
 
-            <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-meta-3 text-xl font-extrabold">{brand.total_requests}</p>
-            </div>
+                  <div className="flex items-center justify-center p-2.5 xl:p-5">
+                    <p className="text-meta-3 text-xl font-extrabold">{brand.total_requests}</p>
+                  </div>
 
-            <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-              <p className="text-black dark:text-white text-xl font-extrabold">{brand.success_request}</p>
-            </div>
+                  <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
+                    <p className="text-black dark:text-white text-xl font-extrabold">{brand.success_request}</p>
+                  </div>
 
-            <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-              <p className="dark:text-red-600 text-red-600 font-extrabold text-xl">{brand.failure_request}</p>
-            </div>
+                  <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
+                    <p className="dark:text-red-600 text-red-600 font-extrabold text-xl">{brand.failure_request}</p>
+                  </div>
 
-            <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-black dark:text-green-500 font-extrabold text-xl">{brand.success_rate}%</p>
-            </div>
+                  <div className="flex items-center justify-center p-2.5 xl:p-5">
+                    <p className="text-black dark:text-green-500 font-extrabold text-xl">{brand.success_rate}%</p>
+                  </div>
 
-            <div className="flex items-center justify-center p-2.5 xl:p-5">
-              <p className="text-red-800 dark:text-red-600 text-xl font-extrabold">{brand.failure_rate}%</p>
-            </div>
-          </div>
-        ))}
+                  <div className="flex items-center justify-center p-2.5 xl:p-5">
+                    <p className="text-red-800 dark:text-red-600 text-xl font-extrabold">{brand.failure_rate}%</p>
+                  </div>
+                </div>
+              ))}
+            </>
+          )
+        }
       </div>
     </div>
   );
