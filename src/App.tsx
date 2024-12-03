@@ -197,7 +197,6 @@ function App() {
           </DefaultLayout>} />
 
 
-
         <Route path='project/:projectname/report' element={
           <DefaultLayout>
             <PageTitle title="Try it out" />

@@ -32,7 +32,7 @@ export interface APIState {
 
 // Define a service using a base URL and expected endpoints
 export const analyticsApi = createApi({
-  reducerPath: 'analyticsApi',
+  reducerPath: 'brijeshanalyticstableApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://10.10.2.179:5555/' }),
   endpoints: (builder) => ({
     getAnalyticsData: builder.query<APIState, void>({
