@@ -7,26 +7,6 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-
-interface ComingSoonModalProps {
-  handleCloseModal: () => void;
-  level0Scrutiny: 'Accept' | 'Reject' | null;
-  handleRadioChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  id: number;
-  name: string;
-  occupation: string;
-  address: string;
-  phone: string;
-  email: string;
-  district_corporation: string;
-  taluka_zone: string;
-  village_area: string;
-  department: string;
-  subject: string;
-  message: string;
-  type: string
-}
-
 interface ClickedRowDataInterface {
   id: number;
   type: string;
@@ -71,6 +51,10 @@ interface ComingSoonModalProps {
   subject: string;
   message: string;
   type: string;
+  lo_sc: string;
+  sentiment_cal_pol: string;
+  sentiment_cal_gra: string;
+  depr_rout: string;
 }
 
 const ComingSoonModal = (props: ComingSoonModalProps) => {
@@ -189,7 +173,26 @@ const ComingSoonModal = (props: ComingSoonModalProps) => {
         {/* Machine Learning Findings Section */}
         <div>
           <h1 className="text-4xl font-bold uppercase text-indigo-600 mb-6 mt-3">Machine Learning Findings</h1>
-          <div className="w-full h-[2px] bg-slate-800 mt-2"></div>
+          <div className='flex justify-start items-center'>
+            <h1 className='font-extrabold text-2xl px-2 min-w-[150px]'>Sentiment Polarity:</h1>
+            <h2 className={`px-2 text-xl ${props.sentiment_cal_pol == 'Negative' ? 'text-red text-xl font-extrabold' : 'text-success text-xl font-extrabold'}`}>{props.sentiment_cal_pol}</h2>
+          </div>
+          <div className='flex justify-start items-center'>
+            <h1 className='font-extrabold text-2xl px-2 min-w-[150px]'>Sentiment Gravity:</h1>
+            <h2 className=' px-2 text-xl'>{props.sentiment_cal_gra}</h2>
+          </div>
+          <div className='flex justify-start items-center'>
+            <h1 className='font-extrabold text-2xl px-2 min-w-[150px]'>Department Route:</h1>
+            <div>
+              <h2 className=' px-2 text-xl w-full'><span className='font-extrabold text-xl text-slate-800'>1. </span>{props.depr_rout.split(',')[0]}</h2>
+              <h2 className=' px-2 text-xl w-full'><span className='font-extrabold text-xl text-slate-800'>2. </span>{props.depr_rout.split(',')[1]}</h2>
+              <h2 className=' px-2 text-xl w-full'><span className='font-extrabold text-xl text-slate-800'>3. </span>{props.depr_rout.split(',')[2]}</h2>
+            </div>
+          </div>
+          <div className='flex justify-start items-center'>
+            <h1 className='font-extrabold text-2xl px-2 min-w-[150px]'>Level0 Scrutiny:</h1>
+            <h2 className={`px-2 text-xl ${props.lo_sc === 'Reject' ? 'text-red font-extrabold' : 'text-success font-extrabold'}`}>{props.lo_sc}</h2>
+          </div>
         </div>
 
         {/* Modal Action Buttons */}
@@ -214,25 +217,24 @@ const ComingSoonModal = (props: ComingSoonModalProps) => {
 };
 
 
-const FromDate = () => {
-  const [startDate, setStartDate] = useState(new Date());
+const FromDate = ({ selectedDate, setSelectedDate }) => {
   return (
     <DatePicker
       showIcon
-      selected={startDate}
-      onChange={(date) => setStartDate(date)}
+      selected={selectedDate}
+      onChange={(date) => setSelectedDate(date)}
       className="p-2 border rounded"
     />
   );
 };
 
-const ToDate = () => {
-  const [startDate, setStartDate] = useState(new Date());
+// Date Picker Component for "To Date"
+const ToDate = ({ selectedDate, setSelectedDate }) => {
   return (
     <DatePicker
       showIcon
-      selected={startDate}
-      onChange={(date) => setStartDate(date)}
+      selected={selectedDate}
+      onChange={(date) => setSelectedDate(date)}
       className="p-2 border rounded"
     />
   );
@@ -244,6 +246,22 @@ const ProjectAnalytics = () => {
   const [clickedRowData, setClickedRowData] = useState<ClickedRowDataInterface | null>(null);
   const [level0Scrutiny, setLevel0Scrutiny] = useState<'Accept' | 'Reject' | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>(''); // Global search query
+
+  // Date Filters
+  const [fromDate, setFromDate] = useState<Date | null>(null); // From Date
+  const [toDate, setToDate] = useState<Date | null>(null); // To Date
+
+
+  // Filter data based on the date range
+  const filteredData = useMemo(() => {
+    if (!data) return [];
+    return data.filter((row) => {
+      const createdAt = new Date(row.created_at);
+      const isAfterFromDate = fromDate ? createdAt >= fromDate : true;
+      const isBeforeToDate = toDate ? createdAt <= toDate : true;
+      return isAfterFromDate && isBeforeToDate;
+    });
+  }, [data, fromDate, toDate]);
 
   const handleRowClick = (event: any) => {
     const rowData = event.data;
@@ -330,8 +348,8 @@ const ProjectAnalytics = () => {
       filter: true,
     },
     {
-      headerName: 'Department Routing',
-      field: 'depr_rout',
+      headerName: 'Department',
+      field: 'department',
       sortable: true,
       filter: true,
     },
@@ -367,14 +385,30 @@ const ProjectAnalytics = () => {
 
   return (
     <div className="flex flex-col bg-[#24303F] p-4">
-      
+      <div className='flex flex-wrap justify-between gap-4'>
+        <div className="flex items-center gap-4">
+          <FromDate selectedDate={fromDate} setSelectedDate={setFromDate} />
+          <ToDate selectedDate={toDate} setSelectedDate={setToDate} />
+        </div>
+
+        {/* Global Search Input */}
+        <div className="flex items-center gap-2">
+          <input
+            type="search"
+            placeholder="Search by mobile, subject, or email"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            className="p-2 border rounded-md"
+          />
+        </div>
+      </div>
 
       <div className="flex flex-grow mt-6">
         <main className="w-full">
           <div className="ag-theme-alpine-dark" style={{ height: '400px', width: '100%' }}>
             <AgGridReact
               columnDefs={columnDefs}
-              rowData={data as any[]}
+              rowData={filteredData as any[]}
               pagination={true}
               paginationPageSize={10}
               domLayout="autoHeight"
@@ -389,7 +423,6 @@ const ProjectAnalytics = () => {
         <ComingSoonModal
           handleCloseModal={handleCloseModal}
           level0Scrutiny={level0Scrutiny}
-          level0Scrutinyprops={level0Scrutiny}
           handleRadioChange={handleRadioChange}
           id={clickedRowData?.id}
           name={clickedRowData?.name}
@@ -404,6 +437,10 @@ const ProjectAnalytics = () => {
           type={clickedRowData?.type}
           subject={clickedRowData?.subject}
           message={clickedRowData?.message}
+          lo_sc={clickedRowData?.lo_sc}
+          sentiment_cal_pol={clickedRowData?.sentiment_cal_pol}
+          sentiment_cal_gra={clickedRowData.sentiment_cal_gra}
+          depr_rout={clickedRowData?.depr_rout}
         />
       )}
     </div>
