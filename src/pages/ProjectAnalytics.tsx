@@ -384,66 +384,85 @@ const ProjectAnalytics = () => {
   }
 
   return (
-    <div className="flex flex-col bg-[#24303F] p-4">
-      <div className='flex flex-wrap justify-between gap-4'>
-        <div className="flex items-center gap-4">
-          <FromDate selectedDate={fromDate} setSelectedDate={setFromDate} />
-          <ToDate selectedDate={toDate} setSelectedDate={setToDate} />
-        </div>
 
-        {/* Global Search Input */}
-        <div className="flex items-center gap-2">
-          <input
-            type="search"
-            placeholder="Search by mobile, subject, or email"
-            value={searchQuery}
-            onChange={handleSearchChange}
-            className="p-2 border rounded-md"
-          />
-        </div>
+    <>
+      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <h2 className="text-title-md2 font-semibold text-black dark:text-white">
+          Basic Chart
+        </h2>
+        <nav>
+          <ol className="flex items-center gap-2">
+            <li>
+              <a className="font-medium" href="/">
+                Dashboard /
+              </a>
+            </li>
+            <li className="font-medium text-primary">Basic Chart</li>
+          </ol>
+        </nav>
       </div>
 
-      <div className="flex flex-grow mt-6">
-        <main className="w-full">
-          <div className="ag-theme-alpine-dark" style={{ height: '400px', width: '100%' }}>
-            <AgGridReact
-              columnDefs={columnDefs}
-              rowData={filteredData as any[]}
-              pagination={true}
-              paginationPageSize={10}
-              domLayout="autoHeight"
-              quickFilterText={searchQuery} // Applying global search
-              onRowClicked={handleRowClick}
+      <div className="flex flex-col bg-[#24303F] p-4">
+        <div className='flex flex-wrap justify-between gap-4'>
+          <div className="flex items-center gap-4">
+            <FromDate selectedDate={fromDate} setSelectedDate={setFromDate} />
+            <ToDate selectedDate={toDate} setSelectedDate={setToDate} />
+          </div>
+
+          {/* Global Search Input */}
+          <div className="flex items-center gap-2">
+            <input
+              type="search"
+              placeholder="Search by mobile, subject, or email"
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className="p-2 border rounded-md"
             />
           </div>
-        </main>
-      </div>
+        </div>
 
-      {isModalOpen && (
-        <ComingSoonModal
-          handleCloseModal={handleCloseModal}
-          level0Scrutiny={level0Scrutiny}
-          handleRadioChange={handleRadioChange}
-          id={clickedRowData?.id}
-          name={clickedRowData?.name}
-          occupation={clickedRowData?.occupation}
-          address={clickedRowData?.address}
-          phone={clickedRowData?.phone}
-          email={clickedRowData?.email}
-          district_corporation={clickedRowData?.district_corporation}
-          taluka_zone={clickedRowData?.taluka_zone}
-          village_area={clickedRowData?.village_area}
-          department={clickedRowData?.department}
-          type={clickedRowData?.type}
-          subject={clickedRowData?.subject}
-          message={clickedRowData?.message}
-          lo_sc={clickedRowData?.lo_sc}
-          sentiment_cal_pol={clickedRowData?.sentiment_cal_pol}
-          sentiment_cal_gra={clickedRowData.sentiment_cal_gra}
-          depr_rout={clickedRowData?.depr_rout}
-        />
-      )}
-    </div>
+        <div className="flex flex-grow mt-6">
+          <main className="w-full">
+            <div className="ag-theme-alpine-dark" style={{ height: '400px', width: '100%' }}>
+              <AgGridReact
+                columnDefs={columnDefs}
+                rowData={filteredData as any[]}
+                pagination={true}
+                paginationPageSize={10}
+                domLayout="autoHeight"
+                quickFilterText={searchQuery} // Applying global search
+                onRowClicked={handleRowClick}
+              />
+            </div>
+          </main>
+        </div>
+
+        {isModalOpen && (
+          <ComingSoonModal
+            handleCloseModal={handleCloseModal}
+            level0Scrutiny={level0Scrutiny}
+            handleRadioChange={handleRadioChange}
+            id={clickedRowData?.id}
+            name={clickedRowData?.name}
+            occupation={clickedRowData?.occupation}
+            address={clickedRowData?.address}
+            phone={clickedRowData?.phone}
+            email={clickedRowData?.email}
+            district_corporation={clickedRowData?.district_corporation}
+            taluka_zone={clickedRowData?.taluka_zone}
+            village_area={clickedRowData?.village_area}
+            department={clickedRowData?.department}
+            type={clickedRowData?.type}
+            subject={clickedRowData?.subject}
+            message={clickedRowData?.message}
+            lo_sc={clickedRowData?.lo_sc}
+            sentiment_cal_pol={clickedRowData?.sentiment_cal_pol}
+            sentiment_cal_gra={clickedRowData.sentiment_cal_gra}
+            depr_rout={clickedRowData?.depr_rout}
+          />
+        )}
+      </div>
+    </>
   );
 };
 

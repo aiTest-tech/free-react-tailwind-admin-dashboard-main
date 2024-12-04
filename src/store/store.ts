@@ -11,6 +11,7 @@ import { TypeDistributionApi } from '../features/Typedistribution';
 import { DepartmentRouteApi } from '../features/DepartmentRouteApi';
 import { wtcCardAnalytics } from '../features/wtcCard';
 import { modedistributionApi } from '../features/modedistribution';
+import { projectCardApi } from '../features/projectcardApi'
 
 // Configure the Redux store
 export const store = configureStore({
@@ -24,6 +25,7 @@ export const store = configureStore({
     [DepartmentRouteApi.reducerPath]: DepartmentRouteApi.reducer,
     [wtcCardAnalytics.reducerPath]: wtcCardAnalytics.reducer,
     [modedistributionApi.reducerPath]: modedistributionApi.reducer,
+    [projectCardApi.reducerPath]: projectCardApi.reducer,
   },
   // Adding the API middleware to enable features like caching and refetching
   middleware: (getDefaultMiddleware) =>
@@ -35,7 +37,8 @@ export const store = configureStore({
       TypeDistributionApi.middleware,
       DepartmentRouteApi.middleware,
       wtcCardAnalytics.middleware,
-      modedistributionApi.middleware,
+      modedistributionApi.middleware, 
+      projectCardApi.middleware, 
     ),
 });
 
