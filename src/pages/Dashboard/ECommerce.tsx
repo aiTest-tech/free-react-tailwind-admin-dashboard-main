@@ -23,12 +23,6 @@ import LineChart from '../../components/LineChart';
 import { useGetProjectCardDataQuery } from '../../features/projectcardApi'
 
 
-
-
-
-
-
-
 const ECommerce: React.FC = () => {
   const { data: projectdata, error, isLoading } = useGetProjectCardDataQuery();
   return (
