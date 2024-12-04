@@ -332,7 +332,7 @@ const TableASR = (props: RequestData) => {
           >
             <div className="flex items-center gap-3 p-2.5 xl:p-5">
               <p className="hidden text-xl text-black dark:text-white sm:block font-extrabold">
-                <NavLink to={`/project/${brand.project}`}>{brand.project}</NavLink>
+                <NavLink to={`/project/${brand.project}`}>{brand.project === 'WTC' && "Write To CMO"}</NavLink>
               </p>
             </div>
 

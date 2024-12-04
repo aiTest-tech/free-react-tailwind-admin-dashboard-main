@@ -388,7 +388,7 @@ const ProjectAnalytics = () => {
     <>
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <h2 className="text-title-md2 font-semibold text-black dark:text-white">
-          Basic Chart
+          Level 0 Scrutiny
         </h2>
         <nav>
           <ol className="flex items-center gap-2">
@@ -397,7 +397,7 @@ const ProjectAnalytics = () => {
                 Dashboard /
               </a>
             </li>
-            <li className="font-medium text-primary">Basic Chart</li>
+            <li className="font-medium text-primary">Level 0 Scrutiny</li>
           </ol>
         </nav>
       </div>
@@ -418,6 +418,12 @@ const ProjectAnalytics = () => {
               onChange={handleSearchChange}
               className="p-2 border rounded-md"
             />
+          </div>
+
+          <div>
+            <button className='bg-success rounded-lg px-4 py-2 mr-3 text-white'>
+              Post
+            </button>
           </div>
         </div>
 
