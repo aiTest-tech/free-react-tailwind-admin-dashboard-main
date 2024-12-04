@@ -52,7 +52,7 @@ const LineChart = () => {
     plugins: {
       title: {
         display: true,
-        text: 'Count of Top 10 Departments by Application',
+        text: '',
         color:"white",
         font: {
           size: 24,  // Font size

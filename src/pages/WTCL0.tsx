@@ -26,6 +26,8 @@ const WTCL0 = () => {
         isError: modelisError,
     } = useModeDistributionApiQuery();
 
+    console.log(modeldistribution);
+
     useEffect(() => {
         // GSAP Animations
         gsap.fromTo(
@@ -91,9 +93,7 @@ const WTCL0 = () => {
                             </div>
                             <div>
                                 <h1 className="text-2xl text-black dark:text-white">
-                                    {modeldistribution && modeldistribution.length > 2 && modeldistribution[0].count && (
-                                        <h1 className="text-2xl text-black dark:text-white">{modeldistribution[0].count}</h1>
-                                    )}
+                                    0
                                 </h1>
                             </div>
                         </div>
@@ -102,8 +102,8 @@ const WTCL0 = () => {
                                 <TbWorldWww size={45} className="text-blue-500 dark:text-blue-300" />
                             </div>
                             <div>
-                                {modeldistribution && modeldistribution.length > 2 && modeldistribution[2].count && (
-                                    <h1 className="text-2xl text-black dark:text-white">{modeldistribution[2].count}</h1>
+                                {modeldistribution && modeldistribution[0].count && (
+                                    <h1 className="text-2xl text-black dark:text-white">{modeldistribution[0].count}</h1>
                                 )}
                             </div>
                         </div>
@@ -119,7 +119,10 @@ const WTCL0 = () => {
                 </div>
             </div>
 
-            <div className="h-full rounded-xl shadow-lg bg-[#FFFFFF] dark:bg-[#24303F] mt-5">
+            <div className="h-full rounded-xl shadow-lg bg-[#FFFFFF] dark:bg-[#24303F] mt-5 relative">
+                <div className="text-center absolute mx-auto w-[100%] top-10">
+                    <h1 className="text-xl font-extrabold text-black dark:text-white">Count of applications forwarded to departments</h1>
+                </div>
                 <LineChart />
             </div>
         </>

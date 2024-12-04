@@ -136,6 +136,32 @@ const ComingSoonModal = (props: ComingSoonModalProps) => {
           <h2 className=" px-2 text-xl">{props.message}</h2>
         </div>
 
+
+        {/* Machine Learning Findings Section */}
+        <div>
+          <h1 className="text-4xl font-bold uppercase text-indigo-600 mb-6 mt-3">Machine Learning Findings</h1>
+          <div className='flex justify-start items-center'>
+            <h1 className='font-extrabold text-2xl px-2 min-w-[150px]'>Sentiment Polarity:</h1>
+            <h2 className={`px-2 text-xl ${props.sentiment_cal_pol == 'Negative' ? 'text-red text-xl font-extrabold' : 'text-success text-xl font-extrabold'}`}>{props.sentiment_cal_pol}</h2>
+          </div>
+          <div className='flex justify-start items-center'>
+            <h1 className='font-extrabold text-2xl px-2 min-w-[150px]'>Sentiment Gravity:</h1>
+            <h2 className=' px-2 text-xl'>{props.sentiment_cal_gra}</h2>
+          </div>
+          <div className='flex justify-start items-center'>
+            <h1 className='font-extrabold text-2xl px-2 min-w-[150px]'>Department Route:</h1>
+            <div>
+              <h2 className=' px-2 text-xl w-full'><span className='font-extrabold text-xl text-slate-800'>1. </span>{props.depr_rout.split(',')[0]}</h2>
+              <h2 className=' px-2 text-xl w-full'><span className='font-extrabold text-xl text-slate-800'>2. </span>{props.depr_rout.split(',')[1]}</h2>
+              <h2 className=' px-2 text-xl w-full'><span className='font-extrabold text-xl text-slate-800'>3. </span>{props.depr_rout.split(',')[2]}</h2>
+            </div>
+          </div>
+          <div className='flex justify-start items-center'>
+            <h1 className='font-extrabold text-2xl px-2 min-w-[150px]'>Level0 Scrutiny:</h1>
+            <h2 className={`px-2 text-xl ${props.lo_sc === 'Reject' ? 'text-red font-extrabold' : 'text-success font-extrabold'}`}>{props.lo_sc}</h2>
+          </div>
+        </div>
+
         {/* Level-0 Scrutiny Section */}
         <h1 className="text-4xl font-bold uppercase text-indigo-600 mb-6 mt-3">
           Level-0 Scrutiny <span className={`${props.level0Scrutiny === 'Accept' ? 'text-green-500 text-xl' : 'text-red-600 text-xl'}`}>
@@ -167,31 +193,6 @@ const ComingSoonModal = (props: ComingSoonModalProps) => {
               className="mr-2"
             />
             <label htmlFor="Reject" className="text-xl">Reject</label>
-          </div>
-        </div>
-
-        {/* Machine Learning Findings Section */}
-        <div>
-          <h1 className="text-4xl font-bold uppercase text-indigo-600 mb-6 mt-3">Machine Learning Findings</h1>
-          <div className='flex justify-start items-center'>
-            <h1 className='font-extrabold text-2xl px-2 min-w-[150px]'>Sentiment Polarity:</h1>
-            <h2 className={`px-2 text-xl ${props.sentiment_cal_pol == 'Negative' ? 'text-red text-xl font-extrabold' : 'text-success text-xl font-extrabold'}`}>{props.sentiment_cal_pol}</h2>
-          </div>
-          <div className='flex justify-start items-center'>
-            <h1 className='font-extrabold text-2xl px-2 min-w-[150px]'>Sentiment Gravity:</h1>
-            <h2 className=' px-2 text-xl'>{props.sentiment_cal_gra}</h2>
-          </div>
-          <div className='flex justify-start items-center'>
-            <h1 className='font-extrabold text-2xl px-2 min-w-[150px]'>Department Route:</h1>
-            <div>
-              <h2 className=' px-2 text-xl w-full'><span className='font-extrabold text-xl text-slate-800'>1. </span>{props.depr_rout.split(',')[0]}</h2>
-              <h2 className=' px-2 text-xl w-full'><span className='font-extrabold text-xl text-slate-800'>2. </span>{props.depr_rout.split(',')[1]}</h2>
-              <h2 className=' px-2 text-xl w-full'><span className='font-extrabold text-xl text-slate-800'>3. </span>{props.depr_rout.split(',')[2]}</h2>
-            </div>
-          </div>
-          <div className='flex justify-start items-center'>
-            <h1 className='font-extrabold text-2xl px-2 min-w-[150px]'>Level0 Scrutiny:</h1>
-            <h2 className={`px-2 text-xl ${props.lo_sc === 'Reject' ? 'text-red font-extrabold' : 'text-success font-extrabold'}`}>{props.lo_sc}</h2>
           </div>
         </div>
 

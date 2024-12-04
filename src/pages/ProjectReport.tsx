@@ -190,7 +190,7 @@ const ProjectReport = () => {
           </ol>
         </nav>
       </div>
-      <div className="flex flex-col bg-[#24303F] p-4">
+      <div className="flex flex-col p-4">
         <div className='flex flex-wrap justify-between gap-4'>
           <div className="flex items-center gap-4">
             <FromDate selectedDate={fromDate} setSelectedDate={setFromDate} />
