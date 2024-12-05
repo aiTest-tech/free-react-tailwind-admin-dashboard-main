@@ -34,10 +34,10 @@ const ECommerce: React.FC = () => {
               <img src="images\gujarat.svg" alt="gujarat" className='w-[30px] h-[30px]' />
             </CardDataStats>
             <CardDataStats title="Jansanvad" total="0" rate="4.35%" levelUp>
-              <MdOutlinePendingActions size={35} />
-            </CardDataStats>
-            <CardDataStats title="S.W.A.G.A.T" total="0" rate="2.59%" levelUp>
               <FaPhoneAlt />
+            </CardDataStats>
+            <CardDataStats title="Food & Civil Services" total="0" rate="2.59%" levelUp>
+              <MdOutlinePendingActions size={35} /> 
             </CardDataStats>
             <CardDataStats title="Add Project" total="" rate="0.95%" levelDown>
               <FaPlus />
