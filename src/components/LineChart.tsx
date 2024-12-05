@@ -21,7 +21,7 @@ const LineChart = () => {
   const department = [];
 
   data?.map((item) => {
-    department.push(item.depr_rout.substring(0, 10).concat('...'));
+    department.push(item.depr_rout_fetch_first);
   });
 
   const departmentcount = [];
@@ -34,7 +34,7 @@ const LineChart = () => {
     labels: department,  // Department names
     datasets: [
       {
-        label: 'Department over requests',  // Label for the line
+        label: 'Count of applications forwarded to departments',  // Label for the line
         data: departmentcount,  // Data for the line (y values)
         fill: false,  // Do not fill under the line
         borderColor: 'rgba(75, 192, 192, 1)',  // Line color

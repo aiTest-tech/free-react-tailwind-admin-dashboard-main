@@ -1,13 +1,10 @@
-
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 // API Data Interfaces
 export interface TypeDistributionInterface {
-  depr_rout:string;
-  count:number
+  depr_rout_fetch_first: string | null | null;
+  count: number;
 }
-
-
 
 // Define a service using a base URL and expected endpoints
 export const DepartmentRouteApi = createApi({

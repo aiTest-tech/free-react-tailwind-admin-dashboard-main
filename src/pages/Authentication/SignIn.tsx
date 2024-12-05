@@ -30,7 +30,7 @@ const SignIn: React.FC = () => {
       document.cookie = `refreshToken=${result.refresh}; Secure; HttpOnly; SameSite=Strict`;
 
       // Navigate to dashboard
-      navigate("/dashboard");
+      navigate("/");
 
       // Show success toast
       toast.success("Successfully logged in");
