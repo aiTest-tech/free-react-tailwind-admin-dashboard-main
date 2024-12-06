@@ -156,10 +156,6 @@ const ComingSoonModal = (props: ComingSoonModalProps) => {
               <h2 className=' px-2 text-xl w-full'><span className='font-extrabold text-xl text-slate-800'>3. </span>{props.depr_rout.split(',')[2]}</h2>
             </div>
           </div>
-          <div className='flex justify-start items-center'>
-            <h1 className='font-extrabold text-2xl px-2 min-w-[150px]'>Level0 Scrutiny:</h1>
-            <h2 className={`px-2 text-xl ${props.lo_sc === 'Reject' ? 'text-red font-extrabold' : 'text-success font-extrabold'}`}>{props.lo_sc}</h2>
-          </div>
         </div>
 
         {/* Level-0 Scrutiny Section */}

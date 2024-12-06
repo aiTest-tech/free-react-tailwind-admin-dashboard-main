@@ -11,6 +11,7 @@ const DropdownUser = () => {
   const navigate = useNavigate();
 
   const handlelogout = () => {
+    window.localStorage.removeItem('accessToken')
     navigate("/signin");
   }
 

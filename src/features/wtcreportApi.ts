@@ -1,4 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+const host = import.meta.env.VITE_HOST;
+const port = import.meta.env.VITE_PORT;
+
+const baseurl = `http://${host}:${port}/`
 
 export interface WTCData {
   //   id: number;
@@ -47,7 +51,7 @@ export interface WTCData {
 // Define a service using a base URL and expected endpoints
 export const wtcReportApi = createApi({
   reducerPath: 'wtcreportApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://10.10.2.179:5555/api/wtc/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: baseurl + 'api/wtc/' }),
   endpoints: (builder) => ({
     getWtcReportApi: builder.query<WTCData[], void>({
       query: () => `records`, // Adjust this path to match your actual endpoint

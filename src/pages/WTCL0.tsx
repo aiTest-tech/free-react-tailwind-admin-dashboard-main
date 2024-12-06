@@ -26,7 +26,6 @@ const WTCL0 = () => {
         isError: modelisError,
     } = useModeDistributionApiQuery();
 
-    console.log(modeldistribution);
 
     useEffect(() => {
         // GSAP Animations

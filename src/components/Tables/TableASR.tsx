@@ -246,16 +246,22 @@ interface RequestData {
   title: String
 }
 
+
 const TableASR = (props: RequestData) => {
   const [apiData, setApiData] = useState<any>(null); // To store the fetched data
   const [isLoading, setIsLoading] = useState(true); // Loading state
   const [isError, setIsError] = useState(false); // Error state
 
+  const host = import.meta.env.VITE_HOST;
+  const port = import.meta.env.VITE_PORT;
+
   // Fetch the data from the API
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://10.10.2.179:5555/api/analytics/');
+        // const response = await fetch('http://10.10.2.179:5555/api/analytics/');
+        const baseURL = `http://${host}:${port}/api/analytics/`;
+        const response = await fetch(baseURL);
         const data = await response.json();
 
         // Assuming the 'asr' data is part of the response

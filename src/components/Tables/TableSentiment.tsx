@@ -162,11 +162,15 @@ const TableSentiment = (props: RequestData) => {
   const [isLoading, setIsLoading] = useState(true); // Loading state
   const [isError, setIsError] = useState(false); // Error state
 
+  const host = import.meta.env.VITE_HOST;
+  const port = import.meta.env.VITE_PORT;
+
   // Fetch the sentiment data from the API
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://10.10.2.179:5555/api/analytics/');
+        const baseurl = `http://${host}:${port}/api/analytics/`
+        const response = await fetch(baseurl);
         const data = await response.json();
 
         // Assuming the 'sentiment' data is part of the response

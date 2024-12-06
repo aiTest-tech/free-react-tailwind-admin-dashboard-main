@@ -30,10 +30,15 @@ export interface APIState {
   l1_scrutiny: L1ScrutinyData[];
 }
 
+const host = import.meta.env.VITE_HOST;
+const port = import.meta.env.VITE_PORT;
+
+const baseurl = `http://${host}:${port}/`
+
 // Define a service using a base URL and expected endpoints
 export const analyticsApi = createApi({
   reducerPath: 'analyticsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://10.10.2.179:5555/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: baseurl + baseurl }),
   endpoints: (builder) => ({
     getAnalyticsData: builder.query<APIState, void>({
       query: () => `api/analytics/`, 
