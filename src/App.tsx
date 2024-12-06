@@ -21,6 +21,7 @@ import ProjectAnalytics from './pages/ProjectAnalytics';
 import DemoPage from './pages/DemoPage';
 import WTCL0 from './pages/WTCL0';
 import ProjectReport from './pages/ProjectReport';
+import AuthGuard from './components/AuthGuard';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -43,10 +44,12 @@ function App() {
           path='/'
           element={
             <>
-              <DefaultLayout>
-                <PageTitle title="CMO SWAR | DASHBOARD" />
-                <ECommerce />
-              </DefaultLayout>
+              <AuthGuard>
+                <DefaultLayout>
+                  <PageTitle title="CMO SWAR | DASHBOARD" />
+                  <ECommerce />
+                </DefaultLayout>
+              </AuthGuard>
             </>
           }
         />
@@ -54,10 +57,12 @@ function App() {
           path="/calendar"
           element={
             <>
-              <DefaultLayout>
-                <PageTitle title="Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-                <Calendar />
-              </DefaultLayout>
+              <AuthGuard>
+                <DefaultLayout>
+                  <PageTitle title="Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                  <Calendar />
+                </DefaultLayout>
+              </AuthGuard>
             </>
           }
         />
@@ -65,10 +70,12 @@ function App() {
           path="/profile"
           element={
             <>
-              <DefaultLayout>
-                <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-                <Profile />
-              </DefaultLayout>
+              <AuthGuard>
+                <DefaultLayout>
+                  <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                  <Profile />
+                </DefaultLayout>
+              </AuthGuard>
             </>
           }
         />
@@ -76,10 +83,12 @@ function App() {
           path="/forms/form-elements"
           element={
             <>
-              <DefaultLayout>
-                <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-                <FormElements />
-              </DefaultLayout>
+              <AuthGuard>
+                <DefaultLayout>
+                  <PageTitle title="Form Elements | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                  <FormElements />
+                </DefaultLayout>
+              </AuthGuard>
             </>
           }
         />
@@ -87,10 +96,12 @@ function App() {
           path="/forms/form-layout"
           element={
             <>
-              <DefaultLayout>
-                <PageTitle title="Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-                <FormLayout />
-              </DefaultLayout>
+              <AuthGuard>
+                <DefaultLayout>
+                  <PageTitle title="Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                  <FormLayout />
+                </DefaultLayout>
+              </AuthGuard>
             </>
           }
         />
@@ -98,10 +109,12 @@ function App() {
           path="/tables"
           element={
             <>
-              <DefaultLayout>
-                <PageTitle title="Tables | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-                <Tables />
-              </DefaultLayout>
+              <AuthGuard>
+                <DefaultLayout>
+                  <PageTitle title="Tables | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                  <Tables />
+                </DefaultLayout>
+              </AuthGuard>
             </>
           }
         />
@@ -109,10 +122,12 @@ function App() {
           path="/settings"
           element={
             <>
-              <DefaultLayout>
-                <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-                <Settings />
-              </DefaultLayout>
+              <AuthGuard>
+                <DefaultLayout>
+                  <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                  <Settings />
+                </DefaultLayout>
+              </AuthGuard>
             </>
           }
         />
@@ -120,10 +135,12 @@ function App() {
           path="/activity"
           element={
             <>
-              <DefaultLayout>
-                <PageTitle title="Activity | CMOSWAR" />
-                <Chart />
-              </DefaultLayout>
+              <AuthGuard>
+                <DefaultLayout>
+                  <PageTitle title="Activity | CMOSWAR" />
+                  <Chart />
+                </DefaultLayout>
+              </AuthGuard>
             </>
           }
         />
@@ -131,10 +148,12 @@ function App() {
           path="/ui/alerts"
           element={
             <>
-              <DefaultLayout>
-                <PageTitle title="Alerts | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-                <Alerts />
-              </DefaultLayout>
+              <AuthGuard>
+                <DefaultLayout>
+                  <PageTitle title="Alerts | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+                  <Alerts />
+                </DefaultLayout>
+              </AuthGuard>
             </>
           }
         />
@@ -170,43 +189,55 @@ function App() {
 
         <Route path='/demo' element={
           <>
-            <DefaultLayout>
-              <PageTitle title="Try it out" />
-              <DemoPage />
-            </DefaultLayout>
+            <AuthGuard>
+              <DefaultLayout>
+                <PageTitle title="Try it out" />
+                <DemoPage />
+              </DefaultLayout>
+            </AuthGuard>
           </>
         } />
 
         <Route path='/project/:projectname'
           element={
             <>
-              <DefaultLayout>
-                <PageTitle title="Try it out" />
-                {/* <ProjectAnalytics /> */}
-                <WTCL0 />
-              </DefaultLayout>
+              <AuthGuard>
+                <DefaultLayout>
+                  <PageTitle title="Try it out" />
+                  {/* <ProjectAnalytics /> */}
+                  <WTCL0 />
+                </DefaultLayout>
+              </AuthGuard>
             </>
           } />
         <Route path='project/wtc/l0' element={
-          <DefaultLayout>
-            <PageTitle title="Try it out" />
-            {/* <WTCL0 /> */}
-            <div className='relative'>
-              <ProjectAnalytics />
-            </div>
-          </DefaultLayout>} />
+          <AuthGuard>
+            <DefaultLayout>
+              <PageTitle title="Try it out" />
+              {/* <WTCL0 /> */}
+              <div className='relative'>
+                <ProjectAnalytics />
+              </div>
+            </DefaultLayout>
+          </AuthGuard>
+        } />
 
 
 
         <Route path='project/:projectname/report' element={
-          <DefaultLayout>
-            <PageTitle title="Try it out" />
-            {/* <WTCL0 /> */}
-            <div className='relative'>
-              {/* <ProjectAnalytics /> */}
-              <ProjectReport />
-            </div>
-          </DefaultLayout>} />
+          <>
+            <AuthGuard>
+              <DefaultLayout>
+                <PageTitle title="Try it out" />
+                {/* <WTCL0 /> */}
+                <div className='relative'>
+                  {/* <ProjectAnalytics /> */}
+                  <ProjectReport />
+                </div>
+              </DefaultLayout>
+            </AuthGuard>
+          </>
+        } />
       </Routes>
     </>
   );

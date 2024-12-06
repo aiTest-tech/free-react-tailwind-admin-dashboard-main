@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { AgGridReact } from 'ag-grid-react';
-import { useGetWtcsDataQuery } from '../features/wtcfetchApi';
+// import { useGetWtcsDataQuery } from '../features/wtcfetchApi';
+import { useGetWtcReportApiQuery } from '../features/wtcreportApi'
 import Loader from '../common/Loader';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
@@ -32,7 +33,7 @@ const ToDate = ({ selectedDate, setSelectedDate }) => {
 };
 
 const ProjectReport = () => {
-  const { data, error, isLoading } = useGetWtcsDataQuery();
+  const { data, error, isLoading } = useGetWtcReportApiQuery();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [clickedRowData, setClickedRowData] = useState(null);
   const [level0Scrutiny, setLevel0Scrutiny] = useState<'Accept' | 'Reject' | null>(null);

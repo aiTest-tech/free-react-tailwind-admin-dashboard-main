@@ -101,7 +101,7 @@ const ComingSoonModal = (props: ComingSoonModalProps) => {
   };
 
   return (
-    <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-100 mt-10 sm:w-screen">
+    <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-100 mt-10 sm:w-screen z-50">
       <div className="bg-white text-black p-6 rounded-lg w-2/3 max-w-3xl shadow-2xl overflow-y-auto max-h-[85vh]">
         <div className="flex justify-between items-center pb-2">
           <h1 className="w-[50px] h-[50px] rounded-full bg-black text-white flex justify-center items-center text-2xl">{props.id}</h1>
