@@ -1,15 +1,14 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-
 const host = import.meta.env.VITE_HOST;
 const port = import.meta.env.VITE_PORT;
 
-const baseurl = `http://${host}:${port}/`
+const baseurl = `http://${host}:${port}/`;
 
 export interface WTCData {
   id: number;
   subject: string;
-  name:string;
+  name: string;
   message: string;
   email: string;
   created_at: string;
@@ -18,17 +17,27 @@ export interface WTCData {
   sentiment_cal_pol: string;
   depr_rout: string;
   phone: string;
-  occupation:string;
-  address:string;
-  district_corporation:string;
-  taluka_zone:string;
-  village_area:string;
+  occupation: string;
+  address: string;
+  district_corporation: string;
+  taluka_zone: string;
+  village_area: string;
 }
 
 // Define a service using a base URL and expected endpoints
 export const wtcApi = createApi({
   reducerPath: 'wtcapi',
-  baseQuery: fetchBaseQuery({ baseUrl: baseurl +'api/wtc/' }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: baseurl + 'api/wtc/',
+    prepareHeaders: (headers) => {
+      const accessToken = localStorage.getItem('accessToken');
+      if (accessToken) {
+        headers.set('Authorization', `Bearer ${accessToken}`);
+      }
+
+      return headers;
+    },
+  }),
   endpoints: (builder) => ({
     getWtcsData: builder.query<WTCData[], void>({
       query: () => `lo/`, // Adjust this path to match your actual endpoint
