@@ -185,14 +185,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     </li>
 
 
-                    <li>
+                    {/* <li>
                       <NavLink to={'/project/js/'}>
                         <button
                           className="flex justify-between items-center w-full px-6 py-3 rounded-lg bg-gray-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition duration-200 ease-in-out transform hover:scale-105"
                           onClick={() => setisJsDropdownOpen(!isJsDropdownOpen)}
                         >
                           <span className="flex items-center gap-4 text-white">
-                            {/* Icon */}
                             <FaProjectDiagram />
                             Jansanvad
                           </span>
@@ -204,7 +203,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                         </button>
                       </NavLink>
 
-                      {/* Nested Dropdown */}
                       {isJsDropdownOpen && (
                         <ul className="pl-6 space-y-2">
                           <li>
@@ -219,7 +217,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                           </li>
                         </ul>
                       )}
-                    </li>
+                    </li> */}
                   </ul>
                 )}
               </li>
@@ -233,18 +231,18 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 </NavLink>
               </li> */}
 
-              <li>
+              {/* <li>
                 <NavLink
                   to="/demo"
                   className={`block px-6 py-2 rounded-lg text-gray-300 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition duration-200 ease-in-out transform hover:scale-105 ${pathname.includes("demo") ? "bg-gray-700" : ""}`}
                 >
                   <span className="flex items-center gap-4 text-white">
                     {/* Icon */}
-                    <FaMicrophone size={25} />
+                    {/* <FaMicrophone size={25} />
                     Demo
                   </span>
                 </NavLink>
-              </li>
+              </li> */} 
             </ul>
           </div>
         </nav>

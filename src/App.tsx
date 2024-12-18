@@ -18,7 +18,7 @@ import Alerts from './pages/UiElements/Alerts';
 import Buttons from './pages/UiElements/Buttons';
 import DefaultLayout from './layout/DefaultLayout';
 import ProjectAnalytics from './pages/ProjectAnalytics';
-import DemoPage from './pages/DemoPage';
+// import DemoPage from './pages/DemoPage';
 import WTCL0 from './pages/WTCL0';
 import ProjectReport from './pages/ProjectReport';
 import AuthGuard from './components/AuthGuard';
@@ -187,7 +187,7 @@ function App() {
           }
         />
 
-        <Route path='/demo' element={
+        {/* <Route path='/demo' element={
           <>
             <AuthGuard>
               <DefaultLayout>
@@ -196,7 +196,7 @@ function App() {
               </DefaultLayout>
             </AuthGuard>
           </>
-        } />
+        } /> */}
 
         <Route path='/project/:projectname'
           element={
@@ -211,7 +211,7 @@ function App() {
             </>
           } />
         <Route path='project/wtc/l0' element={
-          <AuthGuard>
+          // <AuthGuard>
             <DefaultLayout>
               <PageTitle title="Try it out" />
               {/* <WTCL0 /> */}
@@ -219,14 +219,11 @@ function App() {
                 <ProjectAnalytics />
               </div>
             </DefaultLayout>
-          </AuthGuard>
+          // </AuthGuard>sss
         } />
-
-
-
         <Route path='project/:projectname/report' element={
           <>
-            <AuthGuard>
+            {/* <AuthGuard> */}
               <DefaultLayout>
                 <PageTitle title="Try it out" />
                 {/* <WTCL0 /> */}
@@ -235,9 +232,10 @@ function App() {
                   <ProjectReport />
                 </div>
               </DefaultLayout>
-            </AuthGuard>
+            {/* </AuthGuard> */}
           </>
         } />
+        
       </Routes>
     </>
   );

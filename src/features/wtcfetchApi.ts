@@ -29,14 +29,14 @@ export const wtcApi = createApi({
   reducerPath: 'wtcapi',
   baseQuery: fetchBaseQuery({
     baseUrl: baseurl + 'api/wtc/',
-    prepareHeaders: (headers) => {
-      const accessToken = localStorage.getItem('accessToken');
-      if (accessToken) {
-        headers.set('Authorization', `Bearer ${accessToken}`);
-      }
+    // prepareHeaders: (headers) => {
+    //   const accessToken = localStorage.getItem('accessToken');
+    //   if (accessToken) {
+    //     headers.set('Authorization', `Bearer ${accessToken}`);
+    //   }
 
-      return headers;
-    },
+    //   return headers;
+    // },
   }),
   endpoints: (builder) => ({
     getWtcsData: builder.query<WTCData[], void>({

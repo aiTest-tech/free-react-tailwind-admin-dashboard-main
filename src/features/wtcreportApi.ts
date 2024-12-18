@@ -53,14 +53,14 @@ export const wtcReportApi = createApi({
   reducerPath: 'wtcreportApi',
   baseQuery: fetchBaseQuery({
     baseUrl: baseurl + 'api/wtc/',
-    prepareHeaders: (headers) => {
-      const accessToken = localStorage.getItem('accessToken');
-      if (accessToken) {
-        headers.set('Authorization', `Bearer ${accessToken}`);
-      }
+    // prepareHeaders: (headers) => {
+    //   const accessToken = localStorage.getItem('accessToken');
+    //   if (accessToken) {
+    //     headers.set('Authorization', `Bearer ${accessToken}`);
+    //   }
 
-      return headers;
-    },
+    //   return headers;
+    // },
   }),
   endpoints: (builder) => ({
     getWtcReportApi: builder.query<WTCData[], void>({
